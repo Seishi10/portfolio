@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/",
       disallow: "/admin",
     },
-    sitemap: "https://your-domain.com/sitemap.xml",
+    sitemap: "https://seishiru-yourname.vercel.app/sitemap.xml",
   };
 }

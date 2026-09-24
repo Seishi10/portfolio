@@ -25,6 +25,8 @@ export default function AdminProjectsPanel({
   const [tech, setTech] = useState("");
   const [error, setError] = useState("");
 
+  
+
   async function handleAdd(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setError("");
@@ -33,6 +35,8 @@ export default function AdminProjectsPanel({
       setError("Please fill in all required fields.");
       return;
     }
+
+    
 
     const techArray = tech
       .split(",")
