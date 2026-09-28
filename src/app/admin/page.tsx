@@ -2,6 +2,7 @@ import { supabase } from "@/lib/supabaseClient";
 import AdminProjectsPanel from "@/components/AdminProjectsPanel";
 import LogoutButton from "@/components/LogoutButton";
 import AdminMessagesPanel from "@/components/AdminMessagesPanel";
+import AdminCaseFilesPanel from "@/components/AdminCaseFilesPanel";
 
 type Message = {
   id: string;
@@ -9,6 +10,16 @@ type Message = {
   email: string;
   message: string;
   created_at: string;
+};
+
+type CaseFile = {
+  id: string;
+  case_number: string;
+  title: string;
+  category: string;
+  summary: string;
+  tags: string[];
+  writeup: string | null;
 };
 
 type Project = {
@@ -25,6 +36,12 @@ const { data: messages } = await supabase
   .select("*")
   .order("created_at", { ascending: false })
   .returns<Message[]>();
+
+  const { data: caseFiles } = await supabase
+  .from("case_files")
+  .select("*")
+  .order("case_number", { ascending: true })
+  .returns<CaseFile[]>();
 
 
 export default async function AdminDashboard() {
@@ -48,6 +65,7 @@ export default async function AdminDashboard() {
 
 <div className="mt-16">
   <AdminMessagesPanel messages={messages ?? []} />
+  <AdminCaseFilesPanel initialCaseFiles={caseFiles ?? []} />
 </div>
     </section>
   );

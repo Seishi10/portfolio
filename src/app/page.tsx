@@ -36,6 +36,8 @@ type Message = {
   created_at: string;
 };
 
+
+
 export default async function Home() {
   const { data: projects, error } = await supabase
   .from("projects")
@@ -48,6 +50,8 @@ if (error) {
 if (error) {
   console.error("Failed to load projects:", error.message);
 }
+
+
 
 const safeProjects = projects ?? [];
   return (
@@ -270,7 +274,23 @@ const skillGroups = [
     category: "Professional Skills",
     skills: ["Communication", "Problem Solving", "Teamwork", "Time Management"],
   },
+  
+{
+  category: "Security & SOC Tools",
+  skills: [
+    "Splunk",
+    "Wireshark",
+    "Nmap",
+    "SIEM",
+    "MITRE ATT&CK",
+    "VirusTotal",
+    "AbuseIPDB",
+    "Shodan",
+  ],
+},
+
 ];
+
 
 
 const experience = [
