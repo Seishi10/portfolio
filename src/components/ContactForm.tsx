@@ -1,5 +1,5 @@
 "use client";
-import { supabase } from "@/lib/supabaseClient";
+import { supabase } from "@/lib/supabaseBrowser";
 import { useState, FormEvent } from "react";
 
 export default function ContactForm() {
