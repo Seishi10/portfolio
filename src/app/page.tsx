@@ -69,34 +69,33 @@ export default async function Home() {
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4">
             <a
               href="#projects"
-              className="w-full rounded-lg bg-[var(--color-accent)] px-5 py-3 text-center text-sm font-medium text-[#0A0E17] transition-all duration-200 hover:-translate-y-0.5 hover:brightness-110 hover:shadow-[0_0_24px_var(--color-accent-soft)] active:translate-y-0 sm:w-auto sm:py-2.5"
+              className="glass-action glass-action-primary w-full px-5 py-3 text-center text-sm font-medium sm:w-auto sm:py-2.5"
             >
               View Projects
             </a>
 
             <a
               href="#contact"
-              className="w-full rounded-lg border border-[var(--color-border)] px-5 py-3 text-center text-sm font-medium transition-all duration-200 hover:-translate-y-0.5 hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] sm:w-auto sm:py-2.5"
+              className="glass-action w-full px-5 py-3 text-center text-sm font-medium sm:w-auto sm:py-2.5"
             >
               Contact Me
+            </a>
+
+            <a
+              href="/Jonathan-Jude-Suico-CV.pdf"
+              download="Jonathan-Jude-Suico-CV.pdf"
+              className="glass-action w-full px-5 py-3 text-center text-sm font-medium sm:w-auto sm:py-2.5"
+            >
+              Download CV
             </a>
           </div>
         </div>
 
         <div className="portrait-stage relative isolate mx-auto w-full max-w-sm">
-          <div
-            aria-hidden="true"
-            className="portrait-glow absolute inset-[12%] -z-10 rounded-full blur-3xl"
-            style={{
-              background:
-                "radial-gradient(circle, var(--color-accent-soft) 0%, transparent 70%)",
-            }}
-          />
-
           <img
             src="/Images/profile.png"
             alt="Jonathan Jude Suico"
-            className="portrait-image relative block h-auto w-full select-none"
+            className="portrait-image relative z-10 block h-auto w-full select-none"
             draggable={false}
           />
         </div>

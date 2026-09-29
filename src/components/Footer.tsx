@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <footer className="border-t border-[var(--color-border)] py-8">
+    <footer className="relative z-10 border-t border-[var(--color-border)] py-8">
       <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-4 text-center text-sm text-[var(--color-text-secondary)] sm:flex-row sm:px-6 sm:text-left">
         <p>© {new Date().getFullYear()} Jonathan Jude Suico</p>
         <div className="flex flex-wrap justify-center gap-x-4 gap-y-2 sm:justify-end">
