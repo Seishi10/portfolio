@@ -23,13 +23,13 @@ export default async function CaseFilesPage() {
     .returns<CaseFile[]>();
 
   return (
-    <div className="min-h-screen bg-[#0A0E17] text-[#E5E7EB]">
+    <div className="min-h-screen bg-transparent text-[var(--color-text-primary)]">
       <div className="mx-auto max-w-6xl px-6 py-20">
-        <p className="font-mono text-sm text-[#38BDF8]">/case-files</p>
-        <h1 className="mt-2 text-3xl font-semibold text-white sm:text-4xl">
+        <p className="font-mono text-sm text-[var(--color-accent)]">/case-files</p>
+        <h1 className="mt-2 text-3xl font-semibold sm:text-4xl">
           Case Files
         </h1>
-        <p className="mt-4 max-w-2xl text-[#9CA3AF]">
+        <p className="mt-4 max-w-2xl text-[var(--color-text-secondary)]">
           Hands-on security operations work — SIEM detection, incident
           response, packet forensics, and network reconnaissance — completed
           across coursework and lab environments.

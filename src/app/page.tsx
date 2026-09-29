@@ -1,6 +1,7 @@
 import ContactForm from "@/components/ContactForm";
 import { supabase } from "@/lib/supabaseClient";
 import Reveal from "@/components/Reveal";
+import HashScroll from "@/components/HashScroll";
 
 const certifications = [
   { name: "Ethical Hacker", issuer: "Cisco Networking Academy" },
@@ -39,10 +40,11 @@ export default async function Home() {
 
   return (
     <main className="min-h-screen">
+      <HashScroll />
       {/* Hero */}
       <section
         id="home"
-        className="mx-auto grid min-h-[85vh] max-w-6xl grid-cols-1 items-center gap-12 px-6 py-20 lg:grid-cols-[1.1fr_0.9fr]"
+        className="mx-auto grid min-h-[85vh] scroll-mt-24 max-w-6xl grid-cols-1 items-center gap-12 px-6 py-20 lg:grid-cols-[1.1fr_0.9fr]"
       >
         <div>
           <p className="font-mono text-sm text-[var(--color-accent)]">
@@ -67,14 +69,14 @@ export default async function Home() {
           <div className="mt-8 flex flex-wrap gap-4">
             <a
               href="#projects"
-              className="rounded-lg bg-[var(--color-accent)] px-5 py-2.5 text-sm font-medium text-[#0A0E17] transition-all hover:brightness-110 hover:shadow-[0_0_24px_var(--color-accent-soft)]"
+              className="rounded-lg bg-[var(--color-accent)] px-5 py-2.5 text-sm font-medium text-[#0A0E17] transition-all duration-200 hover:-translate-y-0.5 hover:brightness-110 hover:shadow-[0_0_24px_var(--color-accent-soft)] active:translate-y-0"
             >
               View Projects
             </a>
 
             <a
               href="#contact"
-              className="rounded-lg border border-[var(--color-border)] px-5 py-2.5 text-sm font-medium transition-colors hover:border-[var(--color-accent)] hover:text-[var(--color-accent)]"
+              className="rounded-lg border border-[var(--color-border)] px-5 py-2.5 text-sm font-medium transition-all duration-200 hover:-translate-y-0.5 hover:border-[var(--color-accent)] hover:text-[var(--color-accent)]"
             >
               Contact Me
             </a>
@@ -108,7 +110,7 @@ export default async function Home() {
 
       {/* About */}
       <Reveal>
-        <section id="about" className="mx-auto max-w-6xl px-6 py-20">
+        <section id="about" className="mx-auto max-w-6xl scroll-mt-24 px-6 py-20">
           <h2 className="text-3xl font-semibold">About</h2>
 
           <p className="mt-4 max-w-2xl text-[var(--color-text-secondary)]">
@@ -123,7 +125,7 @@ export default async function Home() {
             <div>
               <h3 className="text-lg font-semibold">Education</h3>
 
-              <div className="mt-4 rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-5 shadow-sm">
+              <div className="interactive-card mt-4 rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-5 shadow-sm">
                 <p className="font-medium">BS Computer Engineering</p>
 
                 <p className="text-sm text-[var(--color-text-secondary)]">
@@ -143,7 +145,7 @@ export default async function Home() {
                 {certifications.map((cert) => (
                   <div
                     key={cert.name}
-                    className="rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-4 shadow-sm"
+                    className="interactive-card rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-4 shadow-sm"
                   >
                     <p className="text-sm font-medium">{cert.name}</p>
 
@@ -160,7 +162,7 @@ export default async function Home() {
 
       {/* Skills */}
       <Reveal>
-        <section id="skills" className="mx-auto max-w-6xl px-6 py-20">
+        <section id="skills" className="mx-auto max-w-6xl scroll-mt-24 px-6 py-20">
           <h2 className="text-3xl font-semibold">Skills</h2>
 
           <p className="mt-4 max-w-2xl text-[var(--color-text-secondary)]">
@@ -172,7 +174,7 @@ export default async function Home() {
             {skillGroups.map((group) => (
               <div
                 key={group.category}
-                className="rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-5 shadow-sm"
+                className="interactive-card rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-5 shadow-sm"
               >
                 <h3 className="text-sm font-semibold text-[var(--color-text-secondary)]">
                   {group.category}
@@ -182,7 +184,7 @@ export default async function Home() {
                   {group.skills.map((skill) => (
                     <span
                       key={skill}
-                      className="rounded-md border border-[var(--color-border)] px-2.5 py-1 font-mono text-xs text-[var(--color-text-primary)]"
+                      className="rounded-md border border-[var(--color-border)] px-2.5 py-1 font-mono text-xs text-[var(--color-text-primary)] transition-colors duration-200 hover:border-[var(--color-accent)] hover:text-[var(--color-accent)]"
                     >
                       {skill}
                     </span>
@@ -196,14 +198,14 @@ export default async function Home() {
 
       {/* Experience */}
       <Reveal>
-        <section id="experience" className="mx-auto max-w-6xl px-6 py-20">
+        <section id="experience" className="mx-auto max-w-6xl scroll-mt-24 px-6 py-20">
           <h2 className="text-3xl font-semibold">Experience</h2>
 
           <div className="mt-10 flex flex-col gap-6">
             {experience.map((job) => (
               <div
                 key={job.role + job.company}
-                className="rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-6 shadow-sm"
+                className="interactive-card rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-6 shadow-sm"
               >
                 <div className="flex flex-col justify-between gap-1 sm:flex-row sm:items-baseline">
                   <h3 className="text-lg font-semibold">{job.role}</h3>
@@ -230,7 +232,7 @@ export default async function Home() {
 
       {/* Projects */}
       <Reveal>
-        <section id="projects" className="mx-auto max-w-6xl px-6 py-20">
+        <section id="projects" className="mx-auto max-w-6xl scroll-mt-24 px-6 py-20">
           <h2 className="text-3xl font-semibold">Projects</h2>
 
           <p className="mt-4 max-w-2xl text-[var(--color-text-secondary)]">
@@ -242,7 +244,7 @@ export default async function Home() {
             {safeProjects.map((project) => (
               <div
                 key={project.id}
-                className="flex h-full flex-col rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] shadow-sm"
+                className="interactive-card flex h-full flex-col rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] shadow-sm"
               >
                 <div className="flex h-40 shrink-0 items-center justify-center rounded-t-xl border-b border-[var(--color-border)] bg-[var(--color-background)]">
                   <span className="font-mono text-4xl text-[var(--color-accent)]">
@@ -282,7 +284,7 @@ export default async function Home() {
 
       {/* Contact */}
       <Reveal>
-        <section id="contact" className="mx-auto max-w-6xl px-6 py-20">
+        <section id="contact" className="mx-auto max-w-6xl scroll-mt-24 px-6 py-20">
           <h2 className="text-3xl font-semibold">Contact</h2>
 
           <p className="mt-4 max-w-2xl text-[var(--color-text-secondary)]">

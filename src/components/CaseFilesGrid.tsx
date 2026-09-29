@@ -18,7 +18,7 @@ export default function CaseFilesGrid({
   const [expandedId, setExpandedId] = useState<string | null>(null);
 
   return (
-    <div className="mt-10 grid gap-6 sm:grid-cols-2">
+    <div className="mt-10 grid items-start gap-6 sm:grid-cols-2">
       {caseFiles.map((caseFile) => {
         const badgeStyle =
           categoryColors[caseFile.category] ?? "border-gray-500/40 text-gray-400";
@@ -27,10 +27,10 @@ export default function CaseFilesGrid({
         return (
           <div
             key={caseFile.id}
-            className="rounded-xl border border-white/10 bg-white/[0.03] p-6"
+            className="interactive-card rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)]/80 p-6 shadow-sm backdrop-blur-sm"
           >
             <div className="flex items-center justify-between">
-              <span className="font-mono text-xs text-[#6B7280]">
+              <span className="font-mono text-xs text-[var(--color-text-secondary)]">
                 {caseFile.case_number}
               </span>
               <span
@@ -40,16 +40,16 @@ export default function CaseFilesGrid({
               </span>
             </div>
 
-            <h2 className="mt-3 text-lg font-semibold text-white">
+            <h2 className="mt-3 text-lg font-semibold text-[var(--color-text-primary)]">
               {caseFile.title}
             </h2>
-            <p className="mt-2 text-sm text-[#9CA3AF]">{caseFile.summary}</p>
+            <p className="mt-2 text-sm text-[var(--color-text-secondary)]">{caseFile.summary}</p>
 
             <div className="mt-4 flex flex-wrap gap-2">
               {caseFile.tags.map((tag) => (
                 <span
                   key={tag}
-                  className="rounded-md border border-white/10 px-2 py-1 font-mono text-[11px] text-[#D1D5DB]"
+                  className="rounded-md border border-[var(--color-border)] px-2 py-1 font-mono text-[11px] text-[var(--color-text-primary)] transition-colors duration-200 hover:border-[var(--color-accent)] hover:text-[var(--color-accent)]"
                 >
                   {tag}
                 </span>
@@ -57,15 +57,15 @@ export default function CaseFilesGrid({
             </div>
 
             {caseFile.writeup && (
-              <div className="mt-5 border-t border-white/10 pt-4">
+              <div className="mt-5 border-t border-[var(--color-border)] pt-4">
                 <button
                   onClick={() => setExpandedId(isExpanded ? null : caseFile.id)}
-                  className="font-mono text-xs text-[#38BDF8] hover:underline"
+                  className="block font-mono text-xs text-[var(--color-accent)] transition-transform duration-200 hover:translate-x-1 hover:underline"
                 >
                   {isExpanded ? "− Hide Incident Analysis" : "+ View Incident Analysis"}
                 </button>
                 {isExpanded && (
-                  <p className="mt-3 whitespace-pre-line text-sm text-[#9CA3AF]">
+                  <p className="analysis-content mt-3 whitespace-pre-line text-sm text-[var(--color-text-secondary)]">
                     {caseFile.writeup}
                   </p>
                 )}
@@ -74,7 +74,7 @@ export default function CaseFilesGrid({
    <a href={caseFile.drive_url}
     target="_blank"
     rel="noopener noreferrer"
-    className="mt-4 inline-flex items-center gap-1.5 font-mono text-xs text-[#38BDF8] hover:underline"
+    className="mt-4 block w-fit font-mono text-xs text-[var(--color-accent)] hover:underline"
   >
     View Full Documentation ↗
   </a>

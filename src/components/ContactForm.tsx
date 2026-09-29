@@ -43,7 +43,7 @@ export default function ContactForm() {
           type="text"
           value={name}
           onChange={(e) => setName(e.target.value)}
-          className="rounded-lg border border-[var(--color-border)] px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-[var(--color-accent)]"
+          className="glass-input rounded-lg border border-[var(--color-border)] px-3 py-2 text-sm outline-none transition-colors duration-200 hover:border-white/20 focus:border-[var(--color-accent)] focus:ring-2 focus:ring-[var(--color-accent)]"
         />
       </div>
 
@@ -56,7 +56,7 @@ export default function ContactForm() {
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className="rounded-lg border border-[var(--color-border)] px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-[var(--color-accent)]"
+          className="glass-input rounded-lg border border-[var(--color-border)] px-3 py-2 text-sm outline-none transition-colors duration-200 hover:border-white/20 focus:border-[var(--color-accent)] focus:ring-2 focus:ring-[var(--color-accent)]"
         />
       </div>
 
@@ -69,13 +69,13 @@ export default function ContactForm() {
           rows={5}
           value={message}
           onChange={(e) => setMessage(e.target.value)}
-          className="rounded-lg border border-[var(--color-border)] px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-[var(--color-accent)]"
+          className="glass-input rounded-lg border border-[var(--color-border)] px-3 py-2 text-sm outline-none transition-colors duration-200 hover:border-white/20 focus:border-[var(--color-accent)] focus:ring-2 focus:ring-[var(--color-accent)]"
         />
       </div>
 
       <button
         type="submit"
-        className="w-fit rounded-lg bg-[var(--color-accent)] px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-blue-700"
+        className="w-fit rounded-lg bg-[var(--color-accent)] px-5 py-2.5 text-sm font-medium text-[#0A0E17] transition-all duration-200 hover:-translate-y-0.5 hover:brightness-110 hover:shadow-[0_0_20px_var(--color-accent-soft)]"
       >
         Send Message
       </button>
