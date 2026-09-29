@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import type { CaseFile } from "@/app/case-files/page";
+import { getSafeHttpsUrl } from "@/lib/safeUrl";
 
 const categoryColors: Record<string, string> = {
   DETECTION: "border-red-500/40 text-red-400",
@@ -23,6 +24,7 @@ export default function CaseFilesGrid({
         const badgeStyle =
           categoryColors[caseFile.category] ?? "border-gray-500/40 text-gray-400";
         const isExpanded = expandedId === caseFile.id;
+        const safeDriveUrl = getSafeHttpsUrl(caseFile.drive_url);
 
         return (
           <div
@@ -69,9 +71,9 @@ export default function CaseFilesGrid({
                     {caseFile.writeup}
                   </p>
                 )}
-                {caseFile.drive_url && (
+                {safeDriveUrl && (
   
-   <a href={caseFile.drive_url}
+   <a href={safeDriveUrl}
     target="_blank"
     rel="noopener noreferrer"
     className="mt-4 block w-fit font-mono text-xs text-[var(--color-accent)] hover:underline"
