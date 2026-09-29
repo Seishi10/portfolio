@@ -95,7 +95,7 @@ export default async function Home() {
             <div className="rounded-[23px] bg-[var(--color-surface)] p-3 sm:p-4">
               <div className="overflow-hidden rounded-xl border border-[var(--color-border)]">
                 <img
-                  src="/images/profile.png"
+                  src="/Images/profile.png"
                   alt="Jonathan Jude Suico"
                   className="block h-auto w-full select-none"
                   draggable={false}
