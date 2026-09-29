@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
 import type { MouseEvent as ReactMouseEvent, PointerEvent as ReactPointerEvent } from "react";
 
 const navLinks = [
@@ -17,6 +18,7 @@ export default function Navbar() {
   const dragStartRef = useRef<string | null>(null);
   const suppressClickRef = useRef(false);
   const [dragTarget, setDragTarget] = useState<string | null>(null);
+  const [isNavPressed, setIsNavPressed] = useState(false);
 
   useEffect(() => {
     const finishDrag = (event: PointerEvent) => {
@@ -31,11 +33,13 @@ export default function Navbar() {
       }
 
       dragStartRef.current = null;
+      setIsNavPressed(false);
       setDragTarget(null);
     };
 
     const cancelDrag = () => {
       dragStartRef.current = null;
+      setIsNavPressed(false);
       setDragTarget(null);
     };
 
@@ -53,6 +57,7 @@ export default function Navbar() {
     const href = anchor?.dataset.navHref;
     if (!href) return;
     dragStartRef.current = href;
+    setIsNavPressed(true);
     setDragTarget(href);
   };
 
@@ -74,11 +79,11 @@ export default function Navbar() {
   return (
     <header className="glass-nav sticky top-0 z-50 border-b border-[var(--color-border)]">
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-        <a href="/#home" className="font-mono text-sm font-semibold transition-colors duration-200 hover:text-[var(--color-accent)]">
+        <Link href="/#home" className="font-mono text-sm font-semibold transition-colors duration-200 hover:text-[var(--color-accent)]">
           {"<JonathanSuico />"}
-        </a>
+        </Link>
         <ul
-          className="hidden select-none gap-2 text-sm font-medium sm:flex"
+          className={`hidden select-none gap-2 text-sm font-medium sm:flex ${isNavPressed ? "glass-nav-links" : ""}`}
           onPointerDown={startDrag}
           onPointerOver={previewDrag}
           onClickCapture={suppressDraggedClick}
@@ -86,14 +91,14 @@ export default function Navbar() {
         >
           {navLinks.map((link) => (
             <li key={link.href}>
-              <a
+              <Link
                 href={link.href}
                 data-nav-href={link.href}
                 draggable={false}
-                className={`relative block rounded-full border border-transparent px-3 py-2 text-[var(--color-text-secondary)] transition-all duration-200 hover:text-[var(--color-accent)] focus-visible:text-[var(--color-accent)] ${dragTarget === link.href ? "glass-nav-preview text-[var(--color-accent)]" : ""}`}
+                className={`relative block rounded-full border border-transparent px-3 py-2 text-[var(--color-text-secondary)] transition-colors duration-200 hover:text-[var(--color-accent)] focus-visible:text-[var(--color-accent)] ${dragTarget === link.href ? "text-[var(--color-accent)]" : ""}`}
               >
                 {link.label}
-              </a>
+              </Link>
             </li>
           ))}
         </ul>
