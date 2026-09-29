@@ -123,9 +123,6 @@ textarea:focus-visible {
 
 .portrait-image {
   /* Let the cutout dissolve into the page instead of ending at a hard frame. */
-  filter: blur(0.45px);
-  transform: scale(1.003);
-  transform-origin: center bottom;
   -webkit-mask-image:
     radial-gradient(ellipse 78% 82% at 50% 43%, #000 55%, transparent 100%),
     linear-gradient(to bottom, #000 0%, #000 70%, transparent 100%);
