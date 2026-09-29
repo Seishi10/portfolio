@@ -1,9 +1,10 @@
 @import "tailwindcss";
 
 :root {
-  --color-background: #0A0E17;
-  --color-surface: #121826;
-  --color-surface-hover: #171F30;
+  color-scheme: dark;
+  --color-background: #000000;
+  --color-surface: #0c0c0c;
+  --color-surface-hover: #161616;
   --color-text-primary: #F3F4F6;
   --color-text-secondary: #9CA3AF;
   --color-accent: #38BDF8;
@@ -17,9 +18,48 @@
 }
 
 body {
+  position: relative;
+  isolation: isolate;
   background-color: var(--color-background);
   color: var(--color-text-primary);
   font-family: var(--font-sans);
+}
+
+/* Decorative layers stay behind the content and never intercept clicks. */
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  pointer-events: none;
+  z-index: -1;
+}
+
+body::before {
+  inset: -10%;
+  background:
+    radial-gradient(ellipse at 15% 25%, var(--color-accent-soft), transparent 45%),
+    radial-gradient(ellipse at 85% 70%, rgba(56, 189, 248, 0.07), transparent 40%);
+  animation: ambient-drift 24s ease-in-out infinite alternate;
+}
+
+body::after {
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(ellipse at 50% 30%, black, transparent 75%);
+}
+
+@keyframes ambient-drift {
+  from {
+    transform: translate3d(-3%, -2%, 0) scale(1);
+    opacity: 0.55;
+  }
+  to {
+    transform: translate3d(3%, 2%, 0) scale(1.08);
+    opacity: 1;
+  }
 }
 
 @keyframes fade-in-up {
@@ -41,6 +81,10 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  body::before {
+    animation: none;
+  }
+
   .reveal {
     opacity: 1;
     animation: none;
