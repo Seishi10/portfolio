@@ -83,28 +83,22 @@ export default async function Home() {
           </div>
         </div>
 
-        <div className="relative isolate mx-auto w-full max-w-sm">
+        <div className="portrait-stage relative isolate mx-auto w-full max-w-sm">
           <div
             aria-hidden="true"
-            className="absolute inset-0 -z-10 rounded-full blur-3xl"
+            className="portrait-glow absolute inset-[12%] -z-10 rounded-full blur-3xl"
             style={{
               background:
                 "radial-gradient(circle, var(--color-accent-soft) 0%, transparent 70%)",
             }}
           />
 
-          <div className="rounded-3xl bg-[linear-gradient(135deg,var(--color-accent),var(--color-border)_45%,var(--color-border)_65%,var(--color-accent))] p-px shadow-[0_0_40px_var(--color-accent-soft)]">
-            <div className="rounded-[23px] bg-[var(--color-surface)] p-3 sm:p-4">
-              <div className="overflow-hidden rounded-xl border border-[var(--color-border)]">
-                <img
-                  src="/Images/profile.png"
-                  alt="Jonathan Jude Suico"
-                  className="block h-auto w-full select-none"
-                  draggable={false}
-                />
-              </div>
-            </div>
-          </div>
+          <img
+            src="/Images/profile.png"
+            alt="Jonathan Jude Suico"
+            className="portrait-image relative block h-auto w-full select-none"
+            draggable={false}
+          />
         </div>
       </section>
 
