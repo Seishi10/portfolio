@@ -12,6 +12,7 @@ type CaseFile = {
   summary: string;
   tags: string[];
   writeup: string | null;
+  drive_url: string | null;
 };
 
 export default function AdminCaseFilesPanel({
@@ -26,6 +27,7 @@ export default function AdminCaseFilesPanel({
   const [summary, setSummary] = useState("");
   const [tags, setTags] = useState("");
   const [writeup, setWriteup] = useState("");
+  const [driveUrl, setDriveUrl] = useState("");
   const [error, setError] = useState("");
 
   async function handleAdd(e: FormEvent<HTMLFormElement>) {
@@ -49,6 +51,7 @@ export default function AdminCaseFilesPanel({
       summary,
       tags: tagsArray,
       writeup: writeup.trim() ? writeup : null,
+      drive_url: driveUrl.trim() ? driveUrl : null,
     });
 
     if (insertError) {
@@ -62,6 +65,7 @@ export default function AdminCaseFilesPanel({
     setSummary("");
     setTags("");
     setWriteup("");
+    setDriveUrl("");
     router.refresh();
   }
 
@@ -116,13 +120,19 @@ export default function AdminCaseFilesPanel({
             onChange={(e) => setWriteup(e.target.value)}
             className="rounded-lg border border-[var(--color-border)] px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-[var(--color-accent)]"
           />
+          <input
+            placeholder="Google Drive URL (optional)"
+            value={driveUrl}
+            onChange={(e) => setDriveUrl(e.target.value)}
+            className="rounded-lg border border-[var(--color-border)] px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-[var(--color-accent)]"
+          />
           <button
             type="submit"
             className="w-fit rounded-lg bg-[var(--color-accent)] px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-blue-700"
           >
             Add Case File
           </button>
-          {error && <p className="text-sm text-red-600">{error}</p>}
+          {error && <p className="text-sm text-[var(--color-error)]">{error}</p>}
         </form>
       </div>
 
@@ -146,7 +156,7 @@ export default function AdminCaseFilesPanel({
               </div>
               <button
                 onClick={() => handleDelete(cf.id)}
-                className="text-xs font-medium text-red-600 hover:underline"
+                className="text-xs font-medium text-[var(--color-error)] hover:underline"
               >
                 Delete
               </button>

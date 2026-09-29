@@ -2,6 +2,7 @@ import { supabase } from "@/lib/supabaseClient";
 import CaseFilesGrid from "@/components/CaseFilesGrid";
 
 
+
 export type CaseFile = {
   id: string;
   case_number: string;
@@ -10,6 +11,7 @@ export type CaseFile = {
   summary: string;
   tags: string[];
   writeup: string | null;
+  drive_url: string | null;
   created_at: string;
 };
 

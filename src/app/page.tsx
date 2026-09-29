@@ -1,6 +1,7 @@
 import ContactForm from "@/components/ContactForm";
 import { supabase } from "@/lib/supabaseClient";
 import AdminMessagesPanel from "@/components/AdminMessagesPanel";
+import Reveal from "@/components/Reveal";
 
 const certifications = [
   { name: "Ethical Hacker", issuer: "Cisco Networking Academy" },
@@ -55,39 +56,57 @@ if (error) {
 
 const safeProjects = projects ?? [];
   return (
-    <section className="mx-auto flex min-h-[80vh] max-w-6xl flex-col justify-center px-6 py-20">
-      <p className="font-mono text-sm text-[var(--color-accent)]">
-        Hi, my name is
-      </p>
-      <h1 className="mt-2 text-4xl font-bold sm:text-5xl">
-        Jonathan Jude Suico
-      </h1>
-      <h2 className="mt-2 text-2xl font-semibold text-[var(--color-text-secondary)] sm:text-3xl">
-        Computer Engineering Graduate & Software Developer
-      </h2>
-      <p className="mt-6 max-w-2xl text-[var(--color-text-secondary)]">
-        I build software with a foundation in computer engineering —
-        combining programming, networking fundamentals, and hands-on
-        systems experience. Currently seeking opportunities to grow as a
-        software developer and contribute to real-world projects.
-      </p>
-      <div className="mt-8 flex gap-4">
-        <a
-          href="#projects"
-          className="rounded-lg bg-[var(--color-accent)] px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-blue-700"
-        >
-          View Projects
-        </a>
-        <a
-          href="#contact"
-          className="rounded-lg border border-[var(--color-border)] px-5 py-2.5 text-sm font-medium transition-colors hover:border-[var(--color-accent)] hover:text-[var(--color-accent)]"
-        >
-          Contact Me
-          
-        </a>
-      </div>
-
+    <section className="mx-auto grid min-h-[85vh] max-w-6xl grid-cols-1 items-center gap-12 px-6 py-20 lg:grid-cols-[1.1fr_0.9fr]">
+  <div>
+    <p className="font-mono text-sm text-[var(--color-accent)]">
+      Hi, my name is
+    </p>
+    <h1 className="mt-2 text-4xl font-bold sm:text-5xl">
+      Jonathan Jude Suico
+    </h1>
+    <h2 className="mt-2 text-2xl font-semibold text-[var(--color-text-secondary)] sm:text-3xl">
+      Computer Engineering Graduate & Software Developer
+    </h2>
+    <p className="mt-6 max-w-2xl text-[var(--color-text-secondary)]">
+      I build software with a foundation in computer engineering —
+      combining programming, networking fundamentals, and hands-on
+      systems experience. Currently seeking opportunities to grow as a
+      software developer and contribute to real-world projects.
+    </p>
+    <div className="mt-8 flex gap-4">
       
+       <a href="#projects"
+        className="rounded-lg bg-[var(--color-accent)] px-5 py-2.5 text-sm font-medium text-[#0A0E17] transition-all hover:brightness-110 hover:shadow-[0_0_24px_var(--color-accent-soft)]"
+      >
+        View Projects
+      </a>
+      
+    <a    href="#contact"
+        className="rounded-lg border border-[var(--color-border)] px-5 py-2.5 text-sm font-medium transition-colors hover:border-[var(--color-accent)] hover:text-[var(--color-accent)]"
+      >
+        Contact Me
+      </a>
+    </div>
+  </div>
+
+  <div className="relative mx-auto w-full max-w-sm">
+    <div
+      className="absolute inset-0 -z-10 rounded-full blur-3xl"
+      style={{
+        background:
+          "radial-gradient(circle, var(--color-accent-soft) 0%, transparent 70%)",
+      }}
+    />
+    <img
+      src="/images/profile.png"
+      alt="Jonathan Jude Suico"
+      className="w-full select-none"
+      draggable={false}
+    />
+  </div>
+
+
+   <Reveal>   
       <section id="about" className="mx-auto max-w-6xl px-6 py-20">
         
   <h2 className="text-3xl font-semibold">About</h2>
@@ -136,6 +155,8 @@ const safeProjects = projects ?? [];
 
   
 </section>
+</Reveal>
+<Reveal>
 <section id="skills" className="mx-auto max-w-6xl px-6 py-20">
   <h2 className="text-3xl font-semibold">Skills</h2>
   <p className="mt-4 max-w-2xl text-[var(--color-text-secondary)]">
@@ -166,6 +187,8 @@ const safeProjects = projects ?? [];
     ))}
   </div>
 </section>
+</Reveal>
+<Reveal>
 <section id="experience" className="mx-auto max-w-6xl px-6 py-20">
   <h2 className="text-3xl font-semibold">Experience</h2>
 
@@ -193,6 +216,8 @@ const safeProjects = projects ?? [];
     ))}
   </div>
 </section>
+</Reveal>
+<Reveal>
 <section id="projects" className="mx-auto max-w-6xl px-6 py-20">
   <h2 className="text-3xl font-semibold">Projects</h2>
   <p className="mt-4 max-w-2xl text-[var(--color-text-secondary)]">
@@ -237,6 +262,8 @@ const safeProjects = projects ?? [];
     ))}
   </div>
 </section>
+</Reveal>
+<Reveal>
 <section id="contact" className="mx-auto max-w-6xl px-6 py-20">
   <h2 className="text-3xl font-semibold">Contact</h2>
   <p className="mt-4 max-w-2xl text-[var(--color-text-secondary)]">
@@ -255,6 +282,7 @@ const safeProjects = projects ?? [];
     <ContactForm />
   </div>
 </section>
+</Reveal>
     </section >
     
   );

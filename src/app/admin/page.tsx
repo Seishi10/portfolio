@@ -4,6 +4,7 @@ import LogoutButton from "@/components/LogoutButton";
 import AdminMessagesPanel from "@/components/AdminMessagesPanel";
 import AdminCaseFilesPanel from "@/components/AdminCaseFilesPanel";
 
+
 type Message = {
   id: string;
   name: string;
@@ -20,6 +21,7 @@ type CaseFile = {
   summary: string;
   tags: string[];
   writeup: string | null;
+  drive_url: string | null;
 };
 
 type Project = {

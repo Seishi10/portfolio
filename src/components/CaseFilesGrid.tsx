@@ -69,7 +69,18 @@ export default function CaseFilesGrid({
                     {caseFile.writeup}
                   </p>
                 )}
+                {caseFile.drive_url && (
+  
+   <a href={caseFile.drive_url}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="mt-4 inline-flex items-center gap-1.5 font-mono text-xs text-[#38BDF8] hover:underline"
+  >
+    View Full Documentation ↗
+  </a>
+)}
               </div>
+              
             )}
           </div>
         );
