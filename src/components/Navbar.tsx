@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import type { MouseEvent as ReactMouseEvent, PointerEvent as ReactPointerEvent } from "react";
 
-type IconName = "home" | "about" | "skills" | "experience" | "projects" | "resume" | "contact";
+type IconName = "home" | "about" | "skills" | "experience" | "projects" | "case-files" | "resume" | "contact";
 
 const navLinks: { href: string; label: string; icon: IconName }[] = [
   { href: "/#home", label: "Home", icon: "home" },
@@ -12,6 +12,7 @@ const navLinks: { href: string; label: string; icon: IconName }[] = [
   { href: "/#skills", label: "Skills", icon: "skills" },
   { href: "/#experience", label: "Experience", icon: "experience" },
   { href: "/#projects", label: "Projects", icon: "projects" },
+  { href: "/#case-files", label: "Case Files", icon: "case-files" },
   { href: "/#resume", label: "Resume", icon: "resume" },
   { href: "/#contact", label: "Contact", icon: "contact" },
 ];
@@ -31,6 +32,7 @@ function NavIcon({ name }: { name: IconName }) {
     skills: <><rect {...common} x="2.5" y="5" width="11" height="8" rx="1.5" /><path {...common} d="M5.5 5V3.5h5V5M5.5 9h5" /></>,
     experience: <><path {...common} d="M3 13V8m3 5V5m3 8V7m3 6V3" /><path {...common} d="M2 13.5h12" /></>,
     projects: <><path {...common} d="M2.5 4.5h4l1.4 1.7h4.6v7.3h-10z" /><path {...common} d="M2.5 6.2h10" /></>,
+    "case-files": <><path {...common} d="M3 3h7l3 3v7H3z" /><path {...common} d="M10 3v3h3M5.5 8h5M5.5 10.5h3" /></>,
     resume: <><path {...common} d="M4 2.5h6l2 2V13H4z" /><path {...common} d="M10 2.5V5h2M6 7h4M6 9.5h4" /></>,
     contact: <><rect {...common} x="2" y="3.5" width="12" height="9" rx="1.5" /><path {...common} d="m3 5 5 4 5-4" /></>,
   };
@@ -149,13 +151,13 @@ export default function Navbar() {
         </ul>
 
         <div id="mobile-navigation" className={`lg:hidden ${isMenuOpen ? "mt-3 grid" : "hidden"}`}>
-          <div className="glass-nav-links grid gap-1 rounded-2xl p-2">
+          <div className="glass-nav-links mobile-nav-panel grid gap-2 p-2">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
                 onClick={() => setIsMenuOpen(false)}
-                className="flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium text-[var(--color-text-secondary)] transition-colors hover:bg-white/5 hover:text-[var(--color-accent)]"
+                className="mobile-nav-link flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium text-[var(--color-text-secondary)] transition-colors hover:bg-white/5 hover:text-[var(--color-accent)]"
               >
                 <NavIcon name={link.icon} />
                 {link.label}

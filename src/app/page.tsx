@@ -2,6 +2,8 @@ import ContactForm from "@/components/ContactForm";
 import { supabase } from "@/lib/supabaseClient";
 import Reveal from "@/components/Reveal";
 import HashScroll from "@/components/HashScroll";
+import CaseFilesGrid from "@/components/CaseFilesGrid";
+import type { CaseFile } from "@/lib/types";
 
 const certificationGroups = [
   {
@@ -37,17 +39,27 @@ type Project = {
 };
 
 export default async function Home() {
-  const { data: projects, error } = await supabase
-    .from("projects")
-    .select("*")
-    .order("created_at", { ascending: false })
-    .returns<Project[]>();
+  const [projectsResult, caseFilesResult] = await Promise.all([
+    supabase
+      .from("projects")
+      .select("*")
+      .order("created_at", { ascending: false })
+      .returns<Project[]>(),
+    supabase
+      .from("case_files")
+      .select("*")
+      .order("case_number", { ascending: true })
+      .returns<CaseFile[]>(),
+  ]);
+
+  const { data: projects, error } = projectsResult;
 
   if (error) {
     console.error("Failed to load projects:", error.message);
   }
 
   const safeProjects = projects ?? [];
+  const safeCaseFiles = caseFilesResult.data ?? [];
 
   return (
     <main className="min-h-screen">
@@ -299,6 +311,19 @@ export default async function Home() {
               </div>
             ))}
           </div>
+        </section>
+      </Reveal>
+
+      {/* Case Files */}
+      <Reveal>
+        <section id="case-files" className="mx-auto max-w-6xl scroll-mt-24 px-4 py-16 sm:px-6 sm:py-20">
+          <p className="font-mono text-sm text-[var(--color-accent)]">/case-files</p>
+          <h2 className="mt-2 text-3xl font-semibold">Case Files</h2>
+          <p className="mt-4 max-w-2xl text-[var(--color-text-secondary)]">
+            Hands-on security operations work across SIEM detection, incident response, packet forensics, and network reconnaissance.
+          </p>
+
+          <CaseFilesGrid caseFiles={safeCaseFiles} />
         </section>
       </Reveal>
 

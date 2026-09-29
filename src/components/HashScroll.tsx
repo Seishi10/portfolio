@@ -11,7 +11,7 @@ export default function HashScroll() {
       // Wait until the page is hydrated and layout is ready before scrolling.
       requestAnimationFrame(() => {
         requestAnimationFrame(() => {
-          document.getElementById(id)?.scrollIntoView({ block: "start" });
+      document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
         });
       });
     };

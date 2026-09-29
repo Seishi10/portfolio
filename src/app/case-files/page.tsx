@@ -1,19 +1,6 @@
 import { supabase } from "@/lib/supabaseClient";
 import CaseFilesGrid from "@/components/CaseFilesGrid";
-
-
-
-export type CaseFile = {
-  id: string;
-  case_number: string;
-  title: string;
-  category: string;
-  summary: string;
-  tags: string[];
-  writeup: string | null;
-  drive_url: string | null;
-  created_at: string;
-};
+import type { CaseFile } from "@/lib/types";
 
 export default async function CaseFilesPage() {
   const { data: caseFiles } = await supabase
