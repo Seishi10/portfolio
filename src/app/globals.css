@@ -210,6 +210,117 @@ textarea:focus-visible {
   backdrop-filter: blur(12px);
 }
 
+.skill-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.skill-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.05rem;
+  height: 1.05rem;
+  padding: 0 0.15rem;
+  border: 1px solid rgba(186, 230, 253, 0.22);
+  border-radius: 0.3rem;
+  color: var(--color-accent);
+  background: rgba(56, 189, 248, 0.08);
+  font-size: 0.58rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+.certification-group {
+  overflow: hidden;
+}
+
+.certification-group > summary::-webkit-details-marker {
+  display: none;
+}
+
+.certification-group[open] .certification-chevron {
+  transform: rotate(180deg);
+}
+
+.certification-chevron {
+  transition: transform 180ms ease;
+}
+
+.certification-issuer-mark,
+.certification-badge-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 0.45rem;
+  color: white;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  letter-spacing: -0.08em;
+  text-transform: uppercase;
+}
+
+.certification-issuer-mark {
+  width: 2.25rem;
+  height: 2.25rem;
+  font-size: 0.55rem;
+}
+
+.certification-badge-mark {
+  width: 2.75rem;
+  height: 2.75rem;
+  font-size: 0.6rem;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.28);
+}
+
+.certification-cisco {
+  background: linear-gradient(145deg, rgba(14, 165, 233, 0.85), rgba(8, 47, 73, 0.9));
+}
+
+.certification-ibm {
+  background: linear-gradient(145deg, rgba(236, 72, 153, 0.82), rgba(76, 5, 25, 0.9));
+}
+
+.certification-badge-list {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.certification-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  min-height: 4.25rem;
+  padding: 0.65rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 0.7rem;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.025));
+  transition: border-color 180ms ease, background 180ms ease, transform 180ms ease;
+}
+
+.certification-badge:hover {
+  border-color: rgba(186, 230, 253, 0.3);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.13), rgba(56, 189, 248, 0.05));
+  transform: translateX(2px);
+}
+
+.certification-status {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.3rem;
+  height: 1.3rem;
+  margin-left: auto;
+  border: 1px solid rgba(74, 222, 128, 0.3);
+  border-radius: 9999px;
+  color: var(--color-success);
+  font-size: 0.7rem;
+}
+
 .portrait-stage {
   filter: drop-shadow(0 20px 34px rgba(0, 0, 0, 0.28));
 }
