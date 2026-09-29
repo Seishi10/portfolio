@@ -24,7 +24,7 @@ export default async function CaseFilesPage() {
 
   return (
     <div className="min-h-screen bg-transparent text-[var(--color-text-primary)]">
-      <div className="mx-auto max-w-6xl px-6 py-20">
+      <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
         <p className="font-mono text-sm text-[var(--color-accent)]">/case-files</p>
         <h1 className="mt-2 text-3xl font-semibold sm:text-4xl">
           Case Files

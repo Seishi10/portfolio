@@ -19,6 +19,7 @@ export default function Navbar() {
   const suppressClickRef = useRef(false);
   const [dragTarget, setDragTarget] = useState<string | null>(null);
   const [isNavPressed, setIsNavPressed] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
     const finishDrag = (event: PointerEvent) => {
@@ -78,10 +79,26 @@ export default function Navbar() {
 
   return (
     <header className="glass-nav sticky top-0 z-50 border-b border-[var(--color-border)]">
-      <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-        <Link href="/#home" className="font-mono text-sm font-semibold transition-colors duration-200 hover:text-[var(--color-accent)]">
+      <nav className="mx-auto max-w-6xl px-4 py-3 sm:px-6 sm:py-4">
+        <div className="flex items-center justify-between">
+        <Link href="/#home" onClick={() => setIsMenuOpen(false)} className="font-mono text-sm font-semibold transition-colors duration-200 hover:text-[var(--color-accent)]">
           {"<JonathanSuico />"}
         </Link>
+        <button
+          type="button"
+          aria-label={isMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+          aria-expanded={isMenuOpen}
+          aria-controls="mobile-navigation"
+          onClick={() => setIsMenuOpen((open) => !open)}
+          className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-lg border border-[var(--color-border)] text-[var(--color-text-primary)] transition-colors hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] sm:hidden"
+        >
+          <span className="sr-only">{isMenuOpen ? "Close menu" : "Open menu"}</span>
+          <span aria-hidden="true" className="flex flex-col gap-1.5">
+            <span className={`block h-0.5 w-5 bg-current transition-transform ${isMenuOpen ? "translate-y-2 rotate-45" : ""}`} />
+            <span className={`block h-0.5 w-5 bg-current transition-opacity ${isMenuOpen ? "opacity-0" : ""}`} />
+            <span className={`block h-0.5 w-5 bg-current transition-transform ${isMenuOpen ? "-translate-y-2 -rotate-45" : ""}`} />
+          </span>
+        </button>
         <ul
           className={`hidden select-none gap-2 text-sm font-medium sm:flex ${isNavPressed ? "glass-nav-links" : ""}`}
           onPointerDown={startDrag}
@@ -102,6 +119,22 @@ export default function Navbar() {
             </li>
           ))}
         </ul>
+        </div>
+
+        <div id="mobile-navigation" className={`sm:hidden ${isMenuOpen ? "mt-3 grid" : "hidden"}`}>
+          <div className="glass-nav-links grid gap-1 rounded-2xl p-2">
+            {navLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                onClick={() => setIsMenuOpen(false)}
+                className="rounded-xl px-4 py-3 text-sm font-medium text-[var(--color-text-secondary)] transition-colors hover:bg-white/5 hover:text-[var(--color-accent)]"
+              >
+                {link.label}
+              </Link>
+            ))}
+          </div>
+        </div>
       </nav>
     </header>
   );

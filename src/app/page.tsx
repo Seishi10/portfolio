@@ -44,14 +44,14 @@ export default async function Home() {
       {/* Hero */}
       <section
         id="home"
-        className="mx-auto grid min-h-[85vh] scroll-mt-24 max-w-6xl grid-cols-1 items-center gap-12 px-6 py-20 lg:grid-cols-[1.1fr_0.9fr]"
+        className="mx-auto grid min-h-[85vh] scroll-mt-24 max-w-6xl grid-cols-1 items-center gap-10 px-4 py-16 sm:gap-12 sm:px-6 sm:py-20 lg:grid-cols-[1.1fr_0.9fr]"
       >
         <div>
           <p className="font-mono text-sm text-[var(--color-accent)]">
             Hi, my name is
           </p>
 
-          <h1 className="mt-2 text-4xl font-bold sm:text-5xl">
+          <h1 className="mt-2 text-4xl font-bold leading-tight sm:text-5xl">
             Jonathan Jude Suico
           </h1>
 
@@ -66,17 +66,17 @@ export default async function Home() {
             software developer and contribute to real-world projects.
           </p>
 
-          <div className="mt-8 flex flex-wrap gap-4">
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4">
             <a
               href="#projects"
-              className="rounded-lg bg-[var(--color-accent)] px-5 py-2.5 text-sm font-medium text-[#0A0E17] transition-all duration-200 hover:-translate-y-0.5 hover:brightness-110 hover:shadow-[0_0_24px_var(--color-accent-soft)] active:translate-y-0"
+              className="w-full rounded-lg bg-[var(--color-accent)] px-5 py-3 text-center text-sm font-medium text-[#0A0E17] transition-all duration-200 hover:-translate-y-0.5 hover:brightness-110 hover:shadow-[0_0_24px_var(--color-accent-soft)] active:translate-y-0 sm:w-auto sm:py-2.5"
             >
               View Projects
             </a>
 
             <a
               href="#contact"
-              className="rounded-lg border border-[var(--color-border)] px-5 py-2.5 text-sm font-medium transition-all duration-200 hover:-translate-y-0.5 hover:border-[var(--color-accent)] hover:text-[var(--color-accent)]"
+              className="w-full rounded-lg border border-[var(--color-border)] px-5 py-3 text-center text-sm font-medium transition-all duration-200 hover:-translate-y-0.5 hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] sm:w-auto sm:py-2.5"
             >
               Contact Me
             </a>
@@ -110,7 +110,7 @@ export default async function Home() {
 
       {/* About */}
       <Reveal>
-        <section id="about" className="mx-auto max-w-6xl scroll-mt-24 px-6 py-20">
+        <section id="about" className="mx-auto max-w-6xl scroll-mt-24 px-4 py-16 sm:px-6 sm:py-20">
           <h2 className="text-3xl font-semibold">About</h2>
 
           <p className="mt-4 max-w-2xl text-[var(--color-text-secondary)]">
@@ -162,7 +162,7 @@ export default async function Home() {
 
       {/* Skills */}
       <Reveal>
-        <section id="skills" className="mx-auto max-w-6xl scroll-mt-24 px-6 py-20">
+        <section id="skills" className="mx-auto max-w-6xl scroll-mt-24 px-4 py-16 sm:px-6 sm:py-20">
           <h2 className="text-3xl font-semibold">Skills</h2>
 
           <p className="mt-4 max-w-2xl text-[var(--color-text-secondary)]">
@@ -198,7 +198,7 @@ export default async function Home() {
 
       {/* Experience */}
       <Reveal>
-        <section id="experience" className="mx-auto max-w-6xl scroll-mt-24 px-6 py-20">
+        <section id="experience" className="mx-auto max-w-6xl scroll-mt-24 px-4 py-16 sm:px-6 sm:py-20">
           <h2 className="text-3xl font-semibold">Experience</h2>
 
           <div className="mt-10 flex flex-col gap-6">
@@ -232,7 +232,7 @@ export default async function Home() {
 
       {/* Projects */}
       <Reveal>
-        <section id="projects" className="mx-auto max-w-6xl scroll-mt-24 px-6 py-20">
+        <section id="projects" className="mx-auto max-w-6xl scroll-mt-24 px-4 py-16 sm:px-6 sm:py-20">
           <h2 className="text-3xl font-semibold">Projects</h2>
 
           <p className="mt-4 max-w-2xl text-[var(--color-text-secondary)]">
@@ -252,7 +252,7 @@ export default async function Home() {
                   </span>
                 </div>
 
-                <div className="flex flex-1 flex-col p-6">
+                <div className="flex flex-1 flex-col p-5 sm:p-6">
                   <span className="text-xs font-medium uppercase tracking-wide text-[var(--color-text-secondary)]">
                     {project.type}
                   </span>
@@ -284,7 +284,7 @@ export default async function Home() {
 
       {/* Contact */}
       <Reveal>
-        <section id="contact" className="mx-auto max-w-6xl scroll-mt-24 px-6 py-20">
+        <section id="contact" className="mx-auto max-w-6xl scroll-mt-24 px-4 py-16 sm:px-6 sm:py-20">
           <h2 className="text-3xl font-semibold">Contact</h2>
 
           <p className="mt-4 max-w-2xl text-[var(--color-text-secondary)]">

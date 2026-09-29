@@ -29,7 +29,7 @@ export default function CaseFilesGrid({
         return (
           <div
             key={caseFile.id}
-            className="interactive-card rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)]/80 p-6 shadow-sm backdrop-blur-sm"
+            className="interactive-card rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)]/80 p-4 shadow-sm backdrop-blur-sm sm:p-6"
           >
             <div className="flex items-center justify-between">
               <span className="font-mono text-xs text-[var(--color-text-secondary)]">

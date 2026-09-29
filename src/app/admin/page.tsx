@@ -65,7 +65,7 @@ export default async function AdminDashboard() {
     ]);
 
   return (
-    <section className="mx-auto max-w-6xl px-6 py-20">
+    <section className="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-20">
       <div className="flex items-center justify-between">
         <h1 className="text-2xl font-semibold">Admin Dashboard</h1>
         <LogoutButton />
