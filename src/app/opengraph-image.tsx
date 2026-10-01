@@ -19,13 +19,13 @@ export default function OpengraphImage() {
         }}
       >
         <div style={{ fontSize: 28, color: "#2563EB", fontFamily: "monospace" }}>
-          {"<JonathanSuico />"}
+          Jonathan Suico
         </div>
         <div style={{ fontSize: 64, fontWeight: 700, color: "#111111", marginTop: 20 }}>
           Jonathan Jude Suico
         </div>
         <div style={{ fontSize: 32, color: "#6B7280", marginTop: 10 }}>
-          Computer Engineering Graduate & Software Developer
+          Computer Engineering graduate focused on security operations
         </div>
       </div>
     ),

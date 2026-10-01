@@ -106,8 +106,8 @@ export default function Navbar() {
     <header className="glass-nav sticky top-0 z-50 border-b border-[var(--color-border)] lg:fixed lg:right-5 lg:top-1/2 lg:-translate-y-1/2 lg:rounded-2xl lg:border">
       <nav className="mx-auto max-w-6xl px-4 py-3 sm:px-6 sm:py-4 lg:p-2">
         <div className="flex items-center justify-between lg:block">
-          <Link href="/#home" onClick={() => setIsMenuOpen(false)} className="font-mono text-sm font-semibold transition-colors duration-200 hover:text-[var(--color-accent)] lg:hidden">
-            {"<JonathanSuico />"}
+          <Link href="/#home" onClick={() => setIsMenuOpen(false)} className="text-sm font-semibold transition-colors duration-200 hover:text-[var(--color-accent)] lg:hidden">
+            Jonathan Suico
           </Link>
 
           <button

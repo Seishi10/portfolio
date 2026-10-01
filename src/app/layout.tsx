@@ -3,7 +3,6 @@ import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import TechRain from "@/components/TechRain";
 
 const inter = Inter({
   variable: "--font-sans",
@@ -16,21 +15,22 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Jonathan Jude Suico | Software Developer",
+  title: "Jonathan Jude Suico | Security Operations",
   description:
-    "Computer Engineering graduate and software developer portfolio — projects, skills, and experience in software development, networking, and embedded systems.",
+    "Computer Engineering graduate focused on security operations, network analysis, incident investigation, and security tooling, with a secondary foundation in software development.",
   keywords: [
     "Jonathan Jude Suico",
-    "software developer",
+    "security operations",
+    "SOC analyst",
     "computer engineering",
     "Cebu",
     "portfolio",
   ],
   authors: [{ name: "Jonathan Jude Suico" }],
   openGraph: {
-    title: "Jonathan Jude Suico | Software Developer",
+    title: "Jonathan Jude Suico | Security Operations",
     description:
-      "Computer Engineering graduate and software developer portfolio — projects, skills, and experience.",
+      "Computer Engineering graduate focused on security operations and network analysis.",
     type: "website",
     locale: "en_PH",
   },
@@ -43,7 +43,6 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${inter.variable} ${jetbrainsMono.variable} antialiased`}>
     
      <body className="min-h-full flex flex-col">
-  <TechRain />
   <Navbar />
   <main className="relative z-10 flex-1">{children}</main>
   <Footer />

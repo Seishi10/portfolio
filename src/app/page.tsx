@@ -79,14 +79,18 @@ export default async function Home() {
           </h1>
 
           <h2 className="mt-2 text-2xl font-semibold text-[var(--color-text-secondary)] sm:text-3xl">
-            Computer Engineering Graduate &amp; Software Developer
+            Computer Engineering graduate focused on security operations
           </h2>
 
           <p className="mt-6 max-w-2xl text-[var(--color-text-secondary)]">
-            I build software with a foundation in computer engineering —
-            combining programming, networking fundamentals, and hands-on
-            systems experience. Currently seeking opportunities to grow as a
-            software developer and contribute to real-world projects.
+            I investigate security events, document findings, and build a
+            practical foundation in networking and systems. I also bring
+            software development experience from academic and hardware-based
+            projects.
+          </p>
+
+          <p className="mt-4 font-mono text-sm text-[var(--color-accent)]">
+            Looking for: entry-level SOC analyst or security operations roles in Cebu / remote
           </p>
 
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4">
@@ -131,10 +135,10 @@ export default async function Home() {
 
           <p className="mt-4 max-w-2xl text-[var(--color-text-secondary)]">
             I&apos;m a Computer Engineering graduate from the University of
-            Cebu, with hands-on experience spanning software development,
-            networking fundamentals, and embedded systems. I&apos;m Dean&apos;s
-            Lister for the 2024&ndash;2025 academic year, and I&apos;m
-            currently focused on growing as a software developer.
+            Cebu focused on security operations, network analysis, and
+            incident investigation. My case files show hands-on work with
+            SIEM detection, packet forensics, and reconnaissance, alongside
+            a foundation in software development and embedded systems.
           </p>
 
           <div className="mt-10 grid gap-8 sm:grid-cols-2">
@@ -217,7 +221,6 @@ export default async function Home() {
                       key={skill}
                       className="skill-chip rounded-md border border-[var(--color-border)] px-2.5 py-1 font-mono text-xs text-[var(--color-text-primary)] transition-colors duration-200 hover:border-[var(--color-accent)] hover:text-[var(--color-accent)]"
                     >
-                      <span className="skill-icon" aria-hidden="true">{skillIcons[skill]}</span>
                       {skill}
                     </span>
                   ))}
@@ -332,7 +335,6 @@ export default async function Home() {
         <section id="resume" className="mx-auto max-w-6xl scroll-mt-24 px-4 py-16 sm:px-6 sm:py-20">
           <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
             <div>
-              <p className="font-mono text-sm text-[var(--color-accent)]">[career.system]</p>
               <h2 className="mt-2 text-3xl font-semibold">Resume preview</h2>
               <p className="mt-3 max-w-2xl text-[var(--color-text-secondary)]">
                 Experience, education, and focus areas distilled into one concise view.
@@ -351,15 +353,14 @@ export default async function Home() {
           <div className="interactive-card mt-8 overflow-hidden rounded-2xl border border-[var(--color-border)] shadow-sm">
             <div className="flex flex-col justify-between gap-3 border-b border-[var(--color-border)] px-5 py-4 sm:flex-row sm:items-center sm:px-6">
               <div>
-                <p className="font-mono text-xs text-[var(--color-text-secondary)]">[verified career profile]</p>
-                <h3 className="mt-1 font-mono text-sm font-semibold uppercase tracking-wide">Jonathan Jude Suico</h3>
+                <p className="text-sm text-[var(--color-text-secondary)]">Career snapshot</p>
+                <h3 className="mt-1 text-sm font-semibold uppercase tracking-wide">Jonathan Jude Suico</h3>
               </div>
-              <span className="font-mono text-xs text-[var(--color-success)]">● available for opportunities</span>
+              <span className="text-sm text-[var(--color-success)]">Open to entry-level security roles</span>
             </div>
 
             <div className="grid divide-y divide-[var(--color-border)] lg:grid-cols-2 lg:divide-x lg:divide-y-0">
               <div className="p-5 sm:p-6">
-                <p className="font-mono text-xs text-[var(--color-text-secondary)]">[experience]</p>
                 <h3 className="mt-2 text-xl font-semibold">Professional experience</h3>
 
                 <div className="mt-6 space-y-6 border-l border-white/15 pl-5">
@@ -380,18 +381,17 @@ export default async function Home() {
               </div>
 
               <div className="p-5 sm:p-6">
-                <p className="font-mono text-xs text-[var(--color-text-secondary)]">[education]</p>
                 <h3 className="mt-2 text-xl font-semibold">Bachelor of Science in Computer Engineering</h3>
                 <p className="mt-3 text-sm text-[var(--color-text-secondary)]">University of Cebu – Banilad Campus</p>
                 <p className="mt-1 font-mono text-xs text-[var(--color-text-secondary)]">2022 – 2026 · Cebu City, Philippines</p>
 
                 <div className="mt-6 border-t border-[var(--color-border)] pt-4">
-                  <p className="font-mono text-xs text-[var(--color-text-secondary)]">[focus areas]</p>
+                  <p className="text-sm font-medium text-[var(--color-text-primary)]">Focus areas</p>
                   <div className="mt-3 grid gap-2 text-sm text-[var(--color-text-secondary)] sm:grid-cols-2">
-                    <span className="rounded-lg border border-[var(--color-border)] px-3 py-2">&gt; Software development</span>
-                    <span className="rounded-lg border border-[var(--color-border)] px-3 py-2">&gt; Computer networks</span>
-                    <span className="rounded-lg border border-[var(--color-border)] px-3 py-2">&gt; Operating systems</span>
-                    <span className="rounded-lg border border-[var(--color-border)] px-3 py-2">&gt; Computer hardware</span>
+                    <span className="rounded-lg border border-[var(--color-border)] px-3 py-2">Security operations</span>
+                    <span className="rounded-lg border border-[var(--color-border)] px-3 py-2">Network analysis</span>
+                    <span className="rounded-lg border border-[var(--color-border)] px-3 py-2">Incident investigation</span>
+                    <span className="rounded-lg border border-[var(--color-border)] px-3 py-2">Software development</span>
                   </div>
                 </div>
 
@@ -438,10 +438,6 @@ const skillGroups = [
     skills: ["Git", "GitHub", "Visual Studio", "Arduino IDE"],
   },
   {
-    category: "Professional Skills",
-    skills: ["Communication", "Problem Solving", "Teamwork", "Time Management"],
-  },
-  {
     category: "Security & SOC Tools",
     skills: [
       "Splunk",
@@ -455,30 +451,6 @@ const skillGroups = [
     ],
   },
 ];
-
-const skillIcons: Record<string, string> = {
-  Java: "☕",
-  Python: "PY",
-  C: "C",
-  JavaScript: "JS",
-  HTML: "5",
-  Git: "⌘",
-  GitHub: "GH",
-  "Visual Studio": "VS",
-  "Arduino IDE": "∞",
-  Communication: "••",
-  "Problem Solving": "✦",
-  Teamwork: "++",
-  "Time Management": "◷",
-  Splunk: "S",
-  Wireshark: "≋",
-  Nmap: "N",
-  SIEM: "◈",
-  "MITRE ATT&CK": "M",
-  VirusTotal: "V",
-  AbuseIPDB: "A",
-  Shodan: "◉",
-};
 
 const experience = [
   {
