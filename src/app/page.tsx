@@ -201,8 +201,8 @@ export default async function Home() {
           <h2 className="text-3xl font-semibold">Skills</h2>
 
           <p className="mt-4 max-w-2xl text-[var(--color-text-secondary)]">
-            Technical and professional skills developed through coursework,
-            projects, and hands-on experience.
+            I use these languages and tools to build small systems, inspect
+            network traffic, and investigate suspicious activity.
           </p>
 
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -271,8 +271,9 @@ export default async function Home() {
           <h2 className="text-3xl font-semibold">Projects</h2>
 
           <p className="mt-4 max-w-2xl text-[var(--color-text-secondary)]">
-            A selection of academic and hands-on projects combining software
-            and hardware.
+            My capstone was a QR-activated food locker built on a Raspberry Pi.
+            I also work through software and systems projects that strengthen
+            the programming foundation I bring to security operations.
           </p>
 
           <div className="mt-10 grid gap-6 sm:grid-cols-2">
@@ -323,7 +324,9 @@ export default async function Home() {
           <p className="font-mono text-sm text-[var(--color-accent)]">/case-files</p>
           <h2 className="mt-2 text-3xl font-semibold">Case Files</h2>
           <p className="mt-4 max-w-2xl text-[var(--color-text-secondary)]">
-            Hands-on security operations work across SIEM detection, incident response, packet forensics, and network reconnaissance.
+            I work through Splunk and Wireshark labs across SIEM detection,
+            incident response, packet forensics, and network reconnaissance —
+            including tracing DNS tunneling in the BOTS v2 dataset.
           </p>
 
           <CaseFilesGrid caseFiles={safeCaseFiles} />
@@ -337,7 +340,8 @@ export default async function Home() {
             <div>
               <h2 className="mt-2 text-3xl font-semibold">Resume preview</h2>
               <p className="mt-3 max-w-2xl text-[var(--color-text-secondary)]">
-                Experience, education, and focus areas distilled into one concise view.
+                A quick record of my IT support experience, security focus, and
+                computer engineering foundation.
               </p>
             </div>
 
