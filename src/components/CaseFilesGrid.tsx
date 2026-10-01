@@ -58,7 +58,7 @@ export default function CaseFilesGrid({ caseFiles }: { caseFiles: CaseFile[] }) 
               </span>
             </div>
 
-            <h2 className="mt-3 text-lg font-semibold text-[var(--color-text-primary)]">{caseFile.title}</h2>
+            <h3 className="mt-3 text-lg font-semibold text-[var(--color-text-primary)]">{caseFile.title}</h3>
             <p className="mt-2 w-fit rounded-full border border-[var(--color-accent)]/30 bg-[var(--color-accent)]/5 px-2.5 py-1 text-[11px] text-[var(--color-accent)]">
               {getLearningContext(caseFile)}
             </p>

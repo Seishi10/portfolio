@@ -18,14 +18,6 @@ export const metadata: Metadata = {
   title: "Jonathan Jude Suico | Software Developer",
   description:
     "Computer Engineering graduate and software developer building practical projects with JavaScript, Python, Java, embedded systems, and networking foundations.",
-  keywords: [
-    "Jonathan Jude Suico",
-    "software developer",
-    "embedded systems",
-    "computer engineering",
-    "Cebu",
-    "portfolio",
-  ],
   authors: [{ name: "Jonathan Jude Suico" }],
   openGraph: {
     title: "Jonathan Jude Suico | Software Developer",
@@ -43,6 +35,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${inter.variable} ${jetbrainsMono.variable} antialiased`}>
     
      <body className="min-h-full flex flex-col">
+  <script
+    type="application/ld+json"
+    dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+  />
   <Navbar />
   <main className="relative z-10 flex-1">{children}</main>
   <Footer />
@@ -50,3 +46,18 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     </html>
   );
 }
+
+const personJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Jonathan Jude Suico",
+  jobTitle: "Software Developer",
+  alumniOf: {
+    "@type": "CollegeOrUniversity",
+    name: "University of Cebu",
+  },
+  sameAs: [
+    "https://www.linkedin.com/in/jonathan-jude-suico-b4231b418",
+    "https://www.credly.com/users/jonathan-jude-suico.f68cc045",
+  ],
+};

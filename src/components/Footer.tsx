@@ -21,7 +21,7 @@ export default function Footer() {
             LinkedIn
           </a>
           <a
-            href="https://www.credly.com/users/jonathan-jude-bulahan.f68cc045"
+            href="https://www.credly.com/users/jonathan-jude-suico.f68cc045"
             target="_blank"
             rel="noopener noreferrer"
             className="transition-colors hover:text-[var(--color-text-primary)]"

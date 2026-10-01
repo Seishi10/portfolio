@@ -11,7 +11,7 @@ const certificationGroups = [
     issuer: "Cisco Networking Academy",
     mark: "cisco",
     markClass: "certification-cisco",
-    url: "https://www.credly.com/users/jonathan-jude-bulahan.f68cc045",
+    url: "https://www.credly.com/users/jonathan-jude-suico.f68cc045",
     certifications: [
       { name: "Ethical Hacker", issuer: "Cisco Networking Academy" },
       { name: "Network Defense", issuer: "Cisco Networking Academy" },
@@ -23,7 +23,7 @@ const certificationGroups = [
     issuer: "IBM SkillsBuild",
     mark: "ibm",
     markClass: "certification-ibm",
-    url: "https://www.credly.com/users/jonathan-jude-bulahan.f68cc045",
+    url: "https://www.credly.com/users/jonathan-jude-suico.f68cc045",
     certifications: [
       { name: "Explore Emerging Tech", issuer: "IBM SkillsBuild" },
       { name: "Getting Started with Generative AI", issuer: "IBM SkillsBuild" },
@@ -175,7 +175,7 @@ export default async function Home() {
                 Cisco networking and security credentials, with additional IBM SkillsBuild coursework.
               </p>
             </div>
-            <a href="https://www.credly.com/users/jonathan-jude-bulahan.f68cc045" target="_blank" rel="noopener noreferrer" className="text-sm text-[var(--color-accent)] hover:underline">
+            <a href="https://www.credly.com/users/jonathan-jude-suico.f68cc045" target="_blank" rel="noopener noreferrer" className="text-sm text-[var(--color-accent)] hover:underline">
               View Credly profile →
             </a>
           </div>
