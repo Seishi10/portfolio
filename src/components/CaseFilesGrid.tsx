@@ -11,6 +11,29 @@ const categoryColors: Record<string, string> = {
   RECON: "border-emerald-500/40 text-emerald-400",
 };
 
+function getLearningContext(caseFile: CaseFile) {
+  const searchable = [
+    caseFile.title,
+    caseFile.summary,
+    caseFile.writeup ?? "",
+    ...caseFile.tags,
+  ].join(" ").toLowerCase();
+
+  if (searchable.includes("bots") || searchable.includes("dns tunneling")) {
+    return "Guided lab: Splunk BOTS v2";
+  }
+
+  if (searchable.includes("cve-2011-2523") || searchable.includes("metasploitable")) {
+    return "Self-directed home lab: isolated Metasploitable 2 VM";
+  }
+
+  if (searchable.includes("cisco") || searchable.includes("netacad")) {
+    return "Cisco NetAcad lab";
+  }
+
+  return "Self-directed security lab";
+}
+
 export default function CaseFilesGrid({ caseFiles }: { caseFiles: CaseFile[] }) {
   const [expandedId, setExpandedId] = useState<string | null>(null);
 
@@ -36,6 +59,9 @@ export default function CaseFilesGrid({ caseFiles }: { caseFiles: CaseFile[] }) 
             </div>
 
             <h2 className="mt-3 text-lg font-semibold text-[var(--color-text-primary)]">{caseFile.title}</h2>
+            <p className="mt-2 w-fit rounded-full border border-[var(--color-accent)]/30 bg-[var(--color-accent)]/5 px-2.5 py-1 text-[11px] text-[var(--color-accent)]">
+              {getLearningContext(caseFile)}
+            </p>
             <p className="mt-2 text-sm text-[var(--color-text-secondary)]">{caseFile.summary}</p>
 
             <div className="mt-4 flex flex-wrap gap-2">
@@ -57,13 +83,13 @@ export default function CaseFilesGrid({ caseFiles }: { caseFiles: CaseFile[] }) 
                 onClick={() => setExpandedId(isExpanded ? null : caseFile.id)}
                 className="block font-mono text-xs text-[var(--color-accent)] transition-transform duration-200 hover:translate-x-1 hover:underline"
               >
-                {isExpanded ? "− Hide Incident Analysis" : "+ View Incident Analysis"}
+                {isExpanded ? "− Hide Lab Analysis" : "+ View Lab Analysis"}
               </button>
 
               {isExpanded && (
                 <div id={analysisId} className="analysis-content mt-3 rounded-lg border border-[var(--color-border)] bg-black/20 p-4">
                   <p className="whitespace-pre-line text-sm leading-6 text-[var(--color-text-secondary)]">
-                    {writeup || "No incident analysis has been added for this case file yet."}
+                    {writeup || "No lab analysis has been added for this case file yet."}
                   </p>
                 </div>
               )}
@@ -75,7 +101,7 @@ export default function CaseFilesGrid({ caseFiles }: { caseFiles: CaseFile[] }) 
                   rel="noopener noreferrer"
                   className="mt-4 block w-fit font-mono text-xs text-[var(--color-accent)] hover:underline"
                 >
-                  View Full Documentation →
+                  View Supporting Write-up →
                 </a>
               )}
             </div>

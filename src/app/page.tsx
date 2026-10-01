@@ -79,18 +79,18 @@ export default async function Home() {
           </h1>
 
           <h2 className="mt-2 text-2xl font-semibold text-[var(--color-text-secondary)] sm:text-3xl">
-            Computer Engineering graduate focused on security operations
+            Computer Engineering graduate &amp; software developer
           </h2>
 
           <p className="mt-6 max-w-2xl text-[var(--color-text-secondary)]">
-            I investigate security events, document findings, and build a
-            practical foundation in networking and systems. I also bring
-            software development experience from academic and hardware-based
-            projects.
+            I build practical software with a computer engineering foundation,
+            from a Raspberry Pi food locker capstone to tools and interfaces
+            shaped by networking and systems work. Security analysis is a
+            focused secondary interest.
           </p>
 
           <p className="mt-4 font-mono text-sm text-[var(--color-accent)]">
-            Looking for: entry-level SOC analyst or security operations roles in Cebu / remote
+            Looking for: entry-level software developer roles in Cebu / remote
           </p>
 
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4">
@@ -135,10 +135,10 @@ export default async function Home() {
 
           <p className="mt-4 max-w-2xl text-[var(--color-text-secondary)]">
             I&apos;m a Computer Engineering graduate from the University of
-            Cebu focused on security operations, network analysis, and
-            incident investigation. My case files show hands-on work with
-            SIEM detection, packet forensics, and reconnaissance, alongside
-            a foundation in software development and embedded systems.
+            Cebu focused on building useful software and learning how systems
+            work under the hood. My capstone and development projects are
+            supported by a foundation in networking, embedded systems, and
+            security analysis.
           </p>
 
           <div className="mt-10 grid gap-8 sm:grid-cols-2">
@@ -272,8 +272,8 @@ export default async function Home() {
 
           <p className="mt-4 max-w-2xl text-[var(--color-text-secondary)]">
             My capstone was a QR-activated food locker built on a Raspberry Pi.
-            I also work through software and systems projects that strengthen
-            the programming foundation I bring to security operations.
+            This section is for software and hardware projects; the Case Files
+            section separately documents guided labs and self-directed analysis.
           </p>
 
           <div className="mt-10 grid gap-6 sm:grid-cols-2">
@@ -282,17 +282,13 @@ export default async function Home() {
                 key={project.id}
                 className="interactive-card flex h-full flex-col rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] shadow-sm"
               >
-                <div className="flex h-40 shrink-0 items-center justify-center rounded-t-xl border-b border-[var(--color-border)] bg-[var(--color-background)]">
-                  <span className="font-mono text-4xl text-[var(--color-accent)]">
-                    {"</>"}
+                <div className="flex h-40 shrink-0 items-end rounded-t-xl border-b border-[var(--color-border)] bg-[var(--color-background)] p-5">
+                  <span className="text-sm font-medium text-[var(--color-text-secondary)]">
+                    {project.type}
                   </span>
                 </div>
 
                 <div className="flex flex-1 flex-col p-5 sm:p-6">
-                  <span className="text-xs font-medium uppercase tracking-wide text-[var(--color-text-secondary)]">
-                    {project.type}
-                  </span>
-
                   <h3 className="mt-2 text-lg font-semibold">
                     {project.title}
                   </h3>
@@ -324,9 +320,9 @@ export default async function Home() {
           <p className="font-mono text-sm text-[var(--color-accent)]">/case-files</p>
           <h2 className="mt-2 text-3xl font-semibold">Case Files</h2>
           <p className="mt-4 max-w-2xl text-[var(--color-text-secondary)]">
-            I work through Splunk and Wireshark labs across SIEM detection,
-            incident response, packet forensics, and network reconnaissance —
-            including tracing DNS tunneling in the BOTS v2 dataset.
+            Security analysis labs and case studies, clearly labeled by their
+            learning context — including Splunk and Wireshark work tracing DNS
+            tunneling in the BOTS v2 dataset.
           </p>
 
           <CaseFilesGrid caseFiles={safeCaseFiles} />
@@ -340,7 +336,7 @@ export default async function Home() {
             <div>
               <h2 className="mt-2 text-3xl font-semibold">Resume preview</h2>
               <p className="mt-3 max-w-2xl text-[var(--color-text-secondary)]">
-                A quick record of my IT support experience, security focus, and
+                A quick record of my IT support experience, software focus, and
                 computer engineering foundation.
               </p>
             </div>
@@ -360,7 +356,7 @@ export default async function Home() {
                 <p className="text-sm text-[var(--color-text-secondary)]">Career snapshot</p>
                 <h3 className="mt-1 text-sm font-semibold uppercase tracking-wide">Jonathan Jude Suico</h3>
               </div>
-              <span className="text-sm text-[var(--color-success)]">Open to entry-level security roles</span>
+              <span className="text-sm text-[var(--color-success)]">Open to entry-level software roles</span>
             </div>
 
             <div className="grid divide-y divide-[var(--color-border)] lg:grid-cols-2 lg:divide-x lg:divide-y-0">
@@ -392,10 +388,10 @@ export default async function Home() {
                 <div className="mt-6 border-t border-[var(--color-border)] pt-4">
                   <p className="text-sm font-medium text-[var(--color-text-primary)]">Focus areas</p>
                   <div className="mt-3 grid gap-2 text-sm text-[var(--color-text-secondary)] sm:grid-cols-2">
-                    <span className="rounded-lg border border-[var(--color-border)] px-3 py-2">Security operations</span>
-                    <span className="rounded-lg border border-[var(--color-border)] px-3 py-2">Network analysis</span>
-                    <span className="rounded-lg border border-[var(--color-border)] px-3 py-2">Incident investigation</span>
                     <span className="rounded-lg border border-[var(--color-border)] px-3 py-2">Software development</span>
+                    <span className="rounded-lg border border-[var(--color-border)] px-3 py-2">Embedded systems</span>
+                    <span className="rounded-lg border border-[var(--color-border)] px-3 py-2">Computer networks</span>
+                    <span className="rounded-lg border border-[var(--color-border)] px-3 py-2">Security analysis</span>
                   </div>
                 </div>
 
@@ -442,7 +438,7 @@ const skillGroups = [
     skills: ["Git", "GitHub", "Visual Studio", "Arduino IDE"],
   },
   {
-    category: "Security & SOC Tools",
+    category: "Security Analysis Tools",
     skills: [
       "Splunk",
       "Wireshark",

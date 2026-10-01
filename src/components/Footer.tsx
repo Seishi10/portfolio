@@ -4,6 +4,14 @@ export default function Footer() {
       <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-4 text-center text-sm text-[var(--color-text-secondary)] sm:flex-row sm:px-6 sm:text-left">
         <p>© {new Date().getFullYear()} Jonathan Jude Suico</p>
         <div className="flex flex-wrap justify-center gap-x-4 gap-y-2 sm:justify-end">
+          <a
+            href="https://github.com/dashboard"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="transition-colors hover:text-[var(--color-text-primary)]"
+          >
+            GitHub
+          </a>
           
            <a href="https://www.linkedin.com/in/jonathan-jude-suico-b4231b418"
             target="_blank"

@@ -15,22 +15,22 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Jonathan Jude Suico | Security Operations",
+  title: "Jonathan Jude Suico | Software Developer",
   description:
-    "Computer Engineering graduate focused on security operations, network analysis, incident investigation, and security tooling, with a secondary foundation in software development.",
+    "Computer Engineering graduate and software developer building practical projects with JavaScript, Python, Java, embedded systems, and networking foundations.",
   keywords: [
     "Jonathan Jude Suico",
-    "security operations",
-    "SOC analyst",
+    "software developer",
+    "embedded systems",
     "computer engineering",
     "Cebu",
     "portfolio",
   ],
   authors: [{ name: "Jonathan Jude Suico" }],
   openGraph: {
-    title: "Jonathan Jude Suico | Security Operations",
+    title: "Jonathan Jude Suico | Software Developer",
     description:
-      "Computer Engineering graduate focused on security operations and network analysis.",
+      "Computer Engineering graduate building practical software and embedded systems projects.",
     type: "website",
     locale: "en_PH",
   },

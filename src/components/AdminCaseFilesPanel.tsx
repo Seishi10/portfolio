@@ -114,7 +114,7 @@ export default function AdminCaseFilesPanel({
             className="rounded-lg border border-[var(--color-border)] px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-[var(--color-accent)]"
           />
           <textarea
-            placeholder="Incident Analysis writeup (optional)"
+            placeholder="Lab analysis write-up (optional)"
             rows={4}
             value={writeup}
             onChange={(e) => setWriteup(e.target.value)}

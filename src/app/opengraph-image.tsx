@@ -25,7 +25,7 @@ export default function OpengraphImage() {
           Jonathan Jude Suico
         </div>
         <div style={{ fontSize: 32, color: "#6B7280", marginTop: 10 }}>
-          Computer Engineering graduate focused on security operations
+          Computer Engineering graduate & software developer
         </div>
       </div>
     ),

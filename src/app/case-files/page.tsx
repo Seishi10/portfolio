@@ -17,9 +17,9 @@ export default async function CaseFilesPage() {
           Case Files
         </h1>
         <p className="mt-4 max-w-2xl text-[var(--color-text-secondary)]">
-          I work through Splunk and Wireshark labs across SIEM detection,
-          incident response, packet forensics, and network reconnaissance —
-          including tracing DNS tunneling in the BOTS v2 dataset.
+          Security analysis labs and case studies, labeled by their learning
+          context — including Splunk and Wireshark work tracing DNS tunneling
+          in the BOTS v2 dataset.
         </p>
 
         <CaseFilesGrid caseFiles={caseFiles ?? []} />
