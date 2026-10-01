@@ -4,16 +4,13 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import type { MouseEvent as ReactMouseEvent, PointerEvent as ReactPointerEvent } from "react";
 
-type IconName = "home" | "about" | "skills" | "experience" | "projects" | "case-files" | "resume" | "contact";
+type IconName = "home" | "about" | "experience" | "projects" | "contact";
 
 const navLinks: { href: string; label: string; icon: IconName }[] = [
   { href: "/#home", label: "Home", icon: "home" },
   { href: "/#about", label: "About", icon: "about" },
-  { href: "/#skills", label: "Skills", icon: "skills" },
-  { href: "/#experience", label: "Experience", icon: "experience" },
-  { href: "/#projects", label: "Projects", icon: "projects" },
-  { href: "/#case-files", label: "Case Files", icon: "case-files" },
-  { href: "/#resume", label: "Resume", icon: "resume" },
+  { href: "/#work", label: "Work", icon: "projects" },
+  { href: "/#experience", label: "Experience / CV", icon: "experience" },
   { href: "/#contact", label: "Contact", icon: "contact" },
 ];
 
@@ -29,11 +26,8 @@ function NavIcon({ name }: { name: IconName }) {
   const paths: Record<IconName, React.ReactNode> = {
     home: <path {...common} d="m3 10 5-4 5 4v6H9v-3H7v3H3z" />,
     about: <><circle {...common} cx="8" cy="5" r="2" /><path {...common} d="M4 14c.3-2.3 1.6-3.5 4-3.5s3.7 1.2 4 3.5" /></>,
-    skills: <><rect {...common} x="2.5" y="5" width="11" height="8" rx="1.5" /><path {...common} d="M5.5 5V3.5h5V5M5.5 9h5" /></>,
     experience: <><path {...common} d="M3 13V8m3 5V5m3 8V7m3 6V3" /><path {...common} d="M2 13.5h12" /></>,
     projects: <><path {...common} d="M2.5 4.5h4l1.4 1.7h4.6v7.3h-10z" /><path {...common} d="M2.5 6.2h10" /></>,
-    "case-files": <><path {...common} d="M3 3h7l3 3v7H3z" /><path {...common} d="M10 3v3h3M5.5 8h5M5.5 10.5h3" /></>,
-    resume: <><path {...common} d="M4 2.5h6l2 2V13H4z" /><path {...common} d="M10 2.5V5h2M6 7h4M6 9.5h4" /></>,
     contact: <><rect {...common} x="2" y="3.5" width="12" height="9" rx="1.5" /><path {...common} d="m3 5 5 4 5-4" /></>,
   };
 
@@ -139,7 +133,7 @@ export default function Navbar() {
               <Link
                 href={link.href}
                 data-nav-href={link.href}
-                aria-label={link.label}
+                aria-label={`Go to ${link.label}`}
                 title={link.label}
                 draggable={false}
                 className={`flex h-11 w-11 items-center justify-center rounded-xl border border-transparent text-[var(--color-text-secondary)] transition-all duration-200 hover:border-white/15 hover:bg-white/10 hover:text-[var(--color-text-primary)] ${dragTarget === link.href ? "border-white/20 bg-white/10 text-[var(--color-text-primary)]" : ""}`}

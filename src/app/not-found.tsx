@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function NotFound() {
   return (
     <div className="mx-auto flex min-h-screen max-w-6xl flex-col items-center justify-center px-6 text-center">
@@ -8,11 +10,11 @@ export default function NotFound() {
         moved.
       </p>
       
-       <a href="/"
+       <Link href="/"
         className="mt-6 rounded-lg bg-[var(--color-accent)] px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-blue-700"
       >
         Go Home
-      </a>
+      </Link>
     </div>
   );
 }

@@ -28,12 +28,6 @@ export default function Footer() {
           >
             Credly
           </a>
-          <a
-            href="mailto:shirusei97@gmail.com"
-            className="transition-colors hover:text-[var(--color-text-primary)]"
-          >
-            Email
-          </a>
         </div>
       </div>
     </footer>

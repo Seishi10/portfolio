@@ -2,9 +2,33 @@ import { NextResponse } from "next/server";
 import { supabase } from "@/lib/supabaseClient";
 
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const rateWindowMs = 15 * 60 * 1000;
+const maxRequestsPerWindow = 5;
+const requestLog = new Map<string, { count: number; startedAt: number }>();
 
 export async function POST(request: Request) {
   try {
+    const ip = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "unknown";
+    const now = Date.now();
+    const previous = requestLog.get(ip);
+    const current = previous && now - previous.startedAt < rateWindowMs
+      ? previous
+      : { count: 0, startedAt: now };
+
+    if (current.count >= maxRequestsPerWindow) {
+      return NextResponse.json(
+        { error: "Too many messages from this address. Please try again later." },
+        { status: 429, headers: { "Retry-After": String(Math.ceil((current.startedAt + rateWindowMs - now) / 1000)) } },
+      );
+    }
+
+    current.count += 1;
+    requestLog.set(ip, current);
+
+    if (request.headers.get("content-length") && Number(request.headers.get("content-length")) > 20_000) {
+      return NextResponse.json({ error: "Request is too large." }, { status: 413 });
+    }
+
     const body = await request.json();
     const name = typeof body.name === "string" ? body.name.trim() : "";
     const email = typeof body.email === "string" ? body.email.trim().toLowerCase() : "";

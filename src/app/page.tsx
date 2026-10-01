@@ -1,4 +1,5 @@
 import ContactForm from "@/components/ContactForm";
+import Link from "next/link";
 import { supabase } from "@/lib/supabaseClient";
 import Reveal from "@/components/Reveal";
 import HashScroll from "@/components/HashScroll";
@@ -10,6 +11,7 @@ const certificationGroups = [
     issuer: "Cisco Networking Academy",
     mark: "cisco",
     markClass: "certification-cisco",
+    url: "https://www.credly.com/users/jonathan-jude-bulahan.f68cc045",
     certifications: [
       { name: "Ethical Hacker", issuer: "Cisco Networking Academy" },
       { name: "Network Defense", issuer: "Cisco Networking Academy" },
@@ -21,6 +23,7 @@ const certificationGroups = [
     issuer: "IBM SkillsBuild",
     mark: "ibm",
     markClass: "certification-ibm",
+    url: "https://www.credly.com/users/jonathan-jude-bulahan.f68cc045",
     certifications: [
       { name: "Explore Emerging Tech", issuer: "IBM SkillsBuild" },
       { name: "Getting Started with Generative AI", issuer: "IBM SkillsBuild" },
@@ -95,7 +98,7 @@ export default async function Home() {
 
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4">
             <a
-              href="#projects"
+              href="#work"
               className="glass-action glass-action-primary w-full px-5 py-3 text-center text-sm font-medium sm:w-auto sm:py-2.5"
             >
               View Projects
@@ -158,39 +161,44 @@ export default async function Home() {
               </div>
             </div>
 
+          </div>
+        </section>
+      </Reveal>
+
+      {/* Certifications */}
+      <Reveal>
+        <section id="certifications" className="mx-auto max-w-6xl scroll-mt-24 px-4 py-10 sm:px-6 sm:py-12">
+          <div className="flex flex-col justify-between gap-3 sm:flex-row sm:items-end">
             <div>
-              <h3 className="text-lg font-semibold">Certifications</h3>
-
-              <div className="mt-4 flex flex-col gap-3">
-                {certificationGroups.map((group, index) => (
-                  <details key={group.issuer} className="certification-group interactive-card rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] shadow-sm" open={index === 0}>
-                    <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-4 py-4 font-mono text-xs text-[var(--color-text-secondary)] marker:hidden">
-                      <span className="flex items-center gap-3">
-                        <span className={`certification-issuer-mark ${group.markClass}`} aria-hidden="true">{group.mark}</span>
-                        <span>
-                          <span className="block text-sm font-semibold text-[var(--color-text-primary)]">{group.issuer}</span>
-                          <span className="mt-0.5 block">{group.certifications.length} verified credentials</span>
-                        </span>
-                      </span>
-                      <span className="certification-chevron text-base" aria-hidden="true">⌄</span>
-                    </summary>
-
-                    <div className="certification-badge-list border-t border-[var(--color-border)] p-3">
-                      {group.certifications.map((cert) => (
-                        <div key={cert.name} className="certification-badge">
-                          <span className={`certification-badge-mark ${group.markClass}`} aria-hidden="true">{group.mark}</span>
-                          <span className="min-w-0">
-                            <span className="block text-sm font-medium text-[var(--color-text-primary)]">{cert.name}</span>
-                            <span className="mt-1 block text-xs text-[var(--color-text-secondary)]">{cert.issuer} <span aria-hidden="true">·</span> Verified</span>
-                          </span>
-                          <span className="certification-status" aria-label="Verified">✓</span>
-                        </div>
-                      ))}
-                    </div>
-                  </details>
-                ))}
-              </div>
+              <h2 className="text-2xl font-semibold">Certifications</h2>
+              <p className="mt-2 text-sm text-[var(--color-text-secondary)]">
+                Cisco networking and security credentials, with additional IBM SkillsBuild coursework.
+              </p>
             </div>
+            <a href="https://www.credly.com/users/jonathan-jude-bulahan.f68cc045" target="_blank" rel="noopener noreferrer" className="text-sm text-[var(--color-accent)] hover:underline">
+              View Credly profile →
+            </a>
+          </div>
+
+          <div className="mt-6 grid gap-3 sm:grid-cols-2">
+            {certificationGroups.map((group) => (
+              <div key={group.issuer} className={`interactive-card rounded-xl border border-[var(--color-border)] p-4 shadow-sm ${group.markClass === "certification-ibm" ? "opacity-85" : ""}`}>
+                <div className="flex items-center gap-3">
+                  <span className={`certification-issuer-mark ${group.markClass}`} aria-hidden="true">{group.mark}</span>
+                  <div>
+                    <h3 className="text-sm font-semibold">{group.issuer}</h3>
+                    <p className="text-xs text-[var(--color-text-secondary)]">{group.certifications.length} credentials</p>
+                  </div>
+                </div>
+                <div className="mt-4 flex flex-wrap gap-2">
+                  {group.certifications.map((cert) => (
+                    <a key={cert.name} href={group.url} target="_blank" rel="noopener noreferrer" className="rounded-md border border-[var(--color-border)] px-2.5 py-1.5 text-xs text-[var(--color-text-secondary)] transition-colors hover:border-[var(--color-accent)] hover:text-[var(--color-accent)]">
+                      {cert.name}
+                    </a>
+                  ))}
+                </div>
+              </div>
+            ))}
           </div>
         </section>
       </Reveal>
@@ -234,7 +242,15 @@ export default async function Home() {
       {/* Experience */}
       <Reveal>
         <section id="experience" className="mx-auto max-w-6xl scroll-mt-24 px-4 py-16 sm:px-6 sm:py-20">
-          <h2 className="text-3xl font-semibold">Experience</h2>
+          <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
+            <div>
+              <h2 className="text-3xl font-semibold">Experience</h2>
+              <p className="mt-2 text-sm text-[var(--color-text-secondary)]">A short IT support role supporting day-to-day operations.</p>
+            </div>
+            <a href="/Jonathan-Jude-Suico-CV.pdf" download="Jonathan-Jude-Suico-CV.pdf" className="glass-action w-full px-5 py-3 text-center text-sm font-medium sm:w-auto sm:py-2.5">
+              Download CV
+            </a>
+          </div>
 
           <div className="mt-10 flex flex-col gap-6">
             {experience.map((job) => (
@@ -267,7 +283,7 @@ export default async function Home() {
 
       {/* Projects */}
       <Reveal>
-        <section id="projects" className="mx-auto max-w-6xl scroll-mt-24 px-4 py-16 sm:px-6 sm:py-20">
+        <section id="work" className="mx-auto max-w-6xl scroll-mt-24 px-4 py-16 sm:px-6 sm:py-20">
           <h2 className="text-3xl font-semibold">Projects</h2>
 
           <p className="mt-4 max-w-2xl text-[var(--color-text-secondary)]">
@@ -317,7 +333,9 @@ export default async function Home() {
       {/* Case Files */}
       <Reveal>
         <section id="case-files" className="mx-auto max-w-6xl scroll-mt-24 px-4 py-16 sm:px-6 sm:py-20">
-          <p className="font-mono text-sm text-[var(--color-accent)]">/case-files</p>
+          <Link href="/case-files" className="font-mono text-sm text-[var(--color-accent)] hover:underline">
+            View all case files →
+          </Link>
           <h2 className="mt-2 text-3xl font-semibold">Case Files</h2>
           <p className="mt-4 max-w-2xl text-[var(--color-text-secondary)]">
             Security analysis labs and case studies, clearly labeled by their
@@ -329,94 +347,14 @@ export default async function Home() {
         </section>
       </Reveal>
 
-      {/* Resume */}
-      <Reveal>
-        <section id="resume" className="mx-auto max-w-6xl scroll-mt-24 px-4 py-16 sm:px-6 sm:py-20">
-          <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
-            <div>
-              <h2 className="mt-2 text-3xl font-semibold">Resume preview</h2>
-              <p className="mt-3 max-w-2xl text-[var(--color-text-secondary)]">
-                A quick record of my IT support experience, software focus, and
-                computer engineering foundation.
-              </p>
-            </div>
-
-            <a
-              href="/Jonathan-Jude-Suico-CV.pdf"
-              download="Jonathan-Jude-Suico-CV.pdf"
-              className="glass-action w-full px-5 py-3 text-center text-sm font-medium sm:w-auto sm:py-2.5"
-            >
-              Download full CV
-            </a>
-          </div>
-
-          <div className="interactive-card mt-8 overflow-hidden rounded-2xl border border-[var(--color-border)] shadow-sm">
-            <div className="flex flex-col justify-between gap-3 border-b border-[var(--color-border)] px-5 py-4 sm:flex-row sm:items-center sm:px-6">
-              <div>
-                <p className="text-sm text-[var(--color-text-secondary)]">Career snapshot</p>
-                <h3 className="mt-1 text-sm font-semibold uppercase tracking-wide">Jonathan Jude Suico</h3>
-              </div>
-              <span className="text-sm text-[var(--color-success)]">Open to entry-level software roles</span>
-            </div>
-
-            <div className="grid divide-y divide-[var(--color-border)] lg:grid-cols-2 lg:divide-x lg:divide-y-0">
-              <div className="p-5 sm:p-6">
-                <h3 className="mt-2 text-xl font-semibold">Professional experience</h3>
-
-                <div className="mt-6 space-y-6 border-l border-white/15 pl-5">
-                  <div className="relative">
-                    <span className="absolute -left-[1.65rem] top-1.5 h-2.5 w-2.5 rounded-full bg-[var(--color-success)] shadow-[0_0_10px_rgba(74,222,128,0.45)]" />
-                    <h4 className="font-semibold">IT Assistant</h4>
-                    <p className="mt-1 text-sm text-[var(--color-text-secondary)]">Metrics Call Services Corp.</p>
-                    <p className="mt-1 font-mono text-xs text-[var(--color-text-secondary)]">May 2025 – June 2025</p>
-                  </div>
-
-                  <div className="relative">
-                    <span className="absolute -left-[1.65rem] top-1.5 h-2.5 w-2.5 rounded-full border border-white/35 bg-[var(--color-background)]" />
-                    <p className="text-sm leading-6 text-[var(--color-text-secondary)]">
-                      Supported daily IT operations through account setup, workstation troubleshooting, initial diagnostics, and escalation coordination.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="p-5 sm:p-6">
-                <h3 className="mt-2 text-xl font-semibold">Bachelor of Science in Computer Engineering</h3>
-                <p className="mt-3 text-sm text-[var(--color-text-secondary)]">University of Cebu – Banilad Campus</p>
-                <p className="mt-1 font-mono text-xs text-[var(--color-text-secondary)]">2022 – 2026 · Cebu City, Philippines</p>
-
-                <div className="mt-6 border-t border-[var(--color-border)] pt-4">
-                  <p className="text-sm font-medium text-[var(--color-text-primary)]">Focus areas</p>
-                  <div className="mt-3 grid gap-2 text-sm text-[var(--color-text-secondary)] sm:grid-cols-2">
-                    <span className="rounded-lg border border-[var(--color-border)] px-3 py-2">Software development</span>
-                    <span className="rounded-lg border border-[var(--color-border)] px-3 py-2">Embedded systems</span>
-                    <span className="rounded-lg border border-[var(--color-border)] px-3 py-2">Computer networks</span>
-                    <span className="rounded-lg border border-[var(--color-border)] px-3 py-2">Security analysis</span>
-                  </div>
-                </div>
-
-                <p className="mt-5 text-sm text-[var(--color-text-secondary)]">Dean&apos;s Lister, AY 2024–2025</p>
-              </div>
-            </div>
-          </div>
-        </section>
-      </Reveal>
-
       {/* Contact */}
       <Reveal>
         <section id="contact" className="mx-auto max-w-6xl scroll-mt-24 px-4 py-16 sm:px-6 sm:py-20">
           <h2 className="text-3xl font-semibold">Contact</h2>
 
           <p className="mt-4 max-w-2xl text-[var(--color-text-secondary)]">
-            Have an opportunity or question? Send a message below, or reach
-            out directly at{" "}
-            <a
-              href="mailto:shirusei97@gmail.com"
-              className="text-[var(--color-accent)] underline underline-offset-2"
-            >
-              shirusei97@gmail.com
-            </a>
-            .
+            Have an opportunity or question? Send a message below and I&apos;ll
+            get back to you.
           </p>
 
           <div className="mt-10 max-w-xl">
