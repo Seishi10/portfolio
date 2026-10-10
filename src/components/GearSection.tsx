@@ -7,7 +7,7 @@ export default function GearSection({ items }: { items: GearItem[] }) {
       <p className="font-mono text-xs uppercase tracking-[0.22em] text-[var(--color-text-muted)]">Setup / tools</p>
       <h2 className="mt-3 text-3xl font-semibold tracking-tight">gear</h2>
       <p className="mt-4 max-w-2xl text-[var(--color-text-secondary)]">The hardware and software I use to build, learn, and stay productive.</p>
-      <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="mt-10 grid items-start gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {items.map((item) => {
           const url = getSafeHttpsUrl(item.product_url);
           const isTool = item.category.toLowerCase() === "software";
