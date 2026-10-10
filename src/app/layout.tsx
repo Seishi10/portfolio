@@ -40,8 +40,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
   />
   <Navbar />
-  <main className="relative z-10 flex-1">{children}</main>
-  <Footer />
+  <main className="relative z-10 flex-1 lg:pl-64">{children}</main>
+  <div className="relative z-10 lg:pl-64"><Footer /></div>
 </body>
     </html>
   );
