@@ -1,18 +1,18 @@
 @import "tailwindcss";
 
 :root {
-  color-scheme: light;
-  --color-background: #eef0f2;
-  --color-surface: rgba(255, 255, 255, 0.56);
-  --color-surface-hover: rgba(255, 255, 255, 0.86);
-  --color-text-primary: #151719;
-  --color-text-secondary: #5c6268;
-  --color-text-muted: #92999f;
-  --color-accent: #3e464d;
-  --color-accent-soft: rgba(91, 101, 111, 0.15);
-  --color-border: rgba(38, 45, 51, 0.14);
-  --color-success: #4c7a62;
-  --color-error: #a45656;
+  color-scheme: dark;
+  --color-background: #08090a;
+  --color-surface: rgba(28, 30, 33, 0.64);
+  --color-surface-hover: rgba(45, 48, 52, 0.82);
+  --color-text-primary: #f1f2f3;
+  --color-text-secondary: #a1a6ab;
+  --color-text-muted: #686e74;
+  --color-accent: #d5d9dd;
+  --color-accent-soft: rgba(190, 198, 205, 0.14);
+  --color-border: rgba(255, 255, 255, 0.12);
+  --color-success: #8eb69c;
+  --color-error: #d28a8a;
 
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
@@ -101,11 +101,11 @@ textarea:focus-visible {
 }
 
 .glass-nav {
-  background: rgba(242, 244, 245, 0.72);
+  background: rgba(12, 14, 16, 0.76);
   -webkit-backdrop-filter: blur(24px) saturate(170%);
   backdrop-filter: blur(24px) saturate(170%);
   box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.055),
-    0 10px 30px rgba(67, 75, 82, 0.08);
+    0 10px 30px rgba(0, 0, 0, 0.32);
 }
 
 .glass-nav-links {
@@ -538,5 +538,88 @@ body::after {
     border-color: rgba(72, 81, 89, 0.34);
     background: linear-gradient(145deg, rgba(255, 255, 255, 0.94), rgba(211, 216, 220, 0.58));
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.95), 0 18px 40px rgba(67, 75, 82, 0.12);
+  }
+}
+
+/* Black and dark-grey finish */
+body {
+  background: var(--color-background);
+}
+
+.glass-nav {
+  background: rgba(12, 14, 16, 0.76);
+  box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.06), 0 10px 30px rgba(0, 0, 0, 0.32);
+}
+
+.interactive-card,
+.glass-action,
+.glass-nav-links,
+.mobile-nav-link {
+  border-color: var(--color-border);
+  background: linear-gradient(145deg, rgba(45, 48, 52, 0.76), rgba(19, 21, 23, 0.72) 58%, rgba(105, 113, 121, 0.08));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 12px 32px rgba(0, 0, 0, 0.25);
+}
+
+.glass-action-primary {
+  border-color: rgba(213, 217, 221, 0.44);
+  color: var(--color-text-primary);
+  background: linear-gradient(145deg, rgba(123, 130, 137, 0.48), rgba(52, 56, 61, 0.7) 55%, rgba(255, 255, 255, 0.08));
+}
+
+body::before {
+  background: radial-gradient(ellipse at 15% 25%, rgba(112, 121, 130, 0.16), transparent 43%), radial-gradient(ellipse at 85% 70%, rgba(50, 57, 64, 0.28), transparent 42%);
+}
+
+body::after {
+  background-image: radial-gradient(rgba(212, 218, 223, 0.12) 0.8px, transparent 0.8px);
+}
+
+.activity-memory {
+  display: grid;
+  grid-template-rows: repeat(7, minmax(0, 1fr));
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(0, 1fr);
+  gap: clamp(0.22rem, 0.7vw, 0.5rem);
+  overflow: hidden;
+  padding: 0.35rem 0;
+}
+
+.activity-cell {
+  aspect-ratio: 1;
+  min-width: 0.24rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.04);
+  transition: transform 180ms ease, background-color 180ms ease;
+}
+
+.activity-cell:hover { transform: scale(1.35); }
+.memory-low { background: rgba(207, 213, 218, 0.28); }
+.memory-mid { background: rgba(207, 213, 218, 0.58); }
+.memory-high { background: rgba(245, 247, 248, 0.92); box-shadow: 0 0 12px rgba(220, 226, 231, 0.18); }
+
+.gear-placeholder {
+  background: radial-gradient(circle at 50% 45%, rgba(186, 194, 201, 0.2), transparent 42%), linear-gradient(145deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0));
+}
+
+.gear-placeholder-mark {
+  display: grid;
+  width: 9rem;
+  height: 7rem;
+  place-items: center;
+  border: 1px solid rgba(218, 224, 229, 0.22);
+  border-radius: 0.9rem;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.025));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16), 0 16px 28px rgba(0, 0, 0, 0.22);
+  color: var(--color-text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+}
+
+@media (hover: hover) {
+  .interactive-card:hover {
+    border-color: rgba(213, 217, 221, 0.32);
+    background: linear-gradient(145deg, rgba(55, 59, 64, 0.86), rgba(22, 24, 27, 0.8));
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.11), 0 18px 40px rgba(0, 0, 0, 0.34);
   }
 }

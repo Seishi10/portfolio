@@ -4,6 +4,9 @@ import AdminProjectsPanel from "@/components/AdminProjectsPanel";
 import LogoutButton from "@/components/LogoutButton";
 import AdminMessagesPanel from "@/components/AdminMessagesPanel";
 import AdminCaseFilesPanel from "@/components/AdminCaseFilesPanel";
+import AdminGearPanel from "@/components/AdminGearPanel";
+import AdminGithubPanel from "@/components/AdminGithubPanel";
+import type { GearItem, SiteSettings } from "@/lib/types";
 
 
 type Message = {
@@ -45,7 +48,7 @@ export default async function AdminDashboard() {
 
   if (!user) redirect("/admin/login");
 
-  const [{ data: projects }, { data: messages }, { data: caseFiles }] =
+  const [{ data: projects }, { data: messages }, { data: caseFiles }, { data: gearItems }, { data: siteSettings }] =
     await Promise.all([
       supabase
         .from("projects")
@@ -62,6 +65,16 @@ export default async function AdminDashboard() {
         .select("*")
         .order("case_number", { ascending: true })
         .returns<CaseFile[]>(),
+      supabase
+        .from("gear_items")
+        .select("*")
+        .order("sort_order", { ascending: true })
+        .returns<GearItem[]>(),
+      supabase
+        .from("site_settings")
+        .select("*")
+        .eq("id", "main")
+        .returns<SiteSettings[]>(),
     ]);
 
   return (
@@ -74,7 +87,10 @@ export default async function AdminDashboard() {
         Manage your portfolio projects below.
       </p>
 
-     <AdminProjectsPanel initialProjects={projects ?? []} />
+      <AdminProjectsPanel initialProjects={projects ?? []} />
+
+      <AdminGithubPanel initialSettings={siteSettings?.[0] ?? { id: "main", github_username: "Seishi10", github_url: "https://github.com/Seishi10", github_note: null }} />
+      <AdminGearPanel initialItems={gearItems ?? []} />
 
 <div className="mt-16">
   <AdminMessagesPanel messages={messages ?? []} />
