@@ -8,9 +8,9 @@ const navLinks: { href: string; label: string; icon: IconName }[] = [
   { href: "/#about", label: "About", icon: "about" },
   { href: "/#skills", label: "Skills", icon: "skills" },
   { href: "/#work", label: "Projects", icon: "work" },
-  { href: "/#case-files", label: "Case Files", icon: "case" },
-  { href: "/#github", label: "GitHub", icon: "github" },
-  { href: "/#gear", label: "Gear", icon: "gear" },
+  { href: "/case-files", label: "Case Files", icon: "case" },
+  { href: "/github", label: "GitHub", icon: "github" },
+  { href: "/gear", label: "Gear", icon: "gear" },
   { href: "/#contact", label: "Contact", icon: "contact" },
 ];
 

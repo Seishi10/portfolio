@@ -33,6 +33,9 @@ on conflict (id) do nothing;
 
 insert into public.gear_items (name, category, specs, description, sort_order)
 values
-  ('Acer Nitro ANV15-51-53DG', 'Laptop', 'Specs coming soon', 'Primary machine for development, coursework, security labs, and everyday work.', 1),
+  ('Acer Nitro ANV15-51-53DG', 'Laptop', 'Intel Core i5-13420H · 13th Gen · 8-core · 2.10 GHz
+RTX 4050 · 6 GB GDDR6 · up to 1695 MHz · 75 W
+15.6" FHD IPS matte LCD · 144 Hz · 45% NTSC
+8 GB DDR5 (up to 32 GB) · 512 GB PCIe NVMe M.2', 'Primary machine for development, coursework, security labs, and everyday work.', 1),
   ('Software tools', 'Software', 'Git · GitHub · Visual Studio · Arduino IDE', 'The development tools I use to build, version, test, and work with embedded projects.', 2),
   ('Security tools', 'Software', 'Splunk · Wireshark · Nmap', 'Tools for packet inspection, security analysis, and learning how systems behave under pressure.', 3);

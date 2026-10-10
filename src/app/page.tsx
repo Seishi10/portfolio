@@ -1,12 +1,7 @@
 import ContactForm from "@/components/ContactForm";
-import Link from "next/link";
 import { supabase } from "@/lib/supabaseClient";
 import Reveal from "@/components/Reveal";
 import HashScroll from "@/components/HashScroll";
-import CaseFilesGrid from "@/components/CaseFilesGrid";
-import GithubMemory from "@/components/GithubMemory";
-import GearSection from "@/components/GearSection";
-import type { CaseFile, GearItem, SiteSettings } from "@/lib/types";
 
 const certificationGroups = [
   {
@@ -43,72 +38,12 @@ type Project = {
   created_at: string;
 };
 
-const fallbackGear: GearItem[] = [
-  {
-    id: "acer-nitro-anv15-51-53dg",
-    name: "Acer Nitro ANV15-51-53DG",
-    category: "Laptop",
-    specs: "Laptop · specs coming soon",
-    description: "Primary machine for development, coursework, security labs, and everyday work.",
-    product_url: null,
-    image_url: null,
-    sort_order: 1,
-    created_at: "",
-  },
-  {
-    id: "software-tools",
-    name: "Software tools",
-    category: "Software",
-    specs: "Git · GitHub · Visual Studio · Arduino IDE",
-    description: "The development tools I use to build, version, test, and work with embedded projects.",
-    product_url: null,
-    image_url: null,
-    sort_order: 2,
-    created_at: "",
-  },
-  {
-    id: "security-tools",
-    name: "Security tools",
-    category: "Software",
-    specs: "Splunk · Wireshark · Nmap",
-    description: "Tools for packet inspection, security analysis, and learning how systems behave under pressure.",
-    product_url: null,
-    image_url: null,
-    sort_order: 3,
-    created_at: "",
-  },
-];
-
-const fallbackSettings: SiteSettings = {
-  id: "main",
-  github_username: "Seishi10",
-  github_url: "https://github.com/Seishi10",
-  github_note: null,
-};
-
 export default async function Home() {
-  const [projectsResult, caseFilesResult, gearResult, settingsResult] = await Promise.all([
-    supabase
-      .from("projects")
-      .select("*")
-      .order("created_at", { ascending: false })
-      .returns<Project[]>(),
-    supabase
-      .from("case_files")
-      .select("*")
-      .order("case_number", { ascending: true })
-      .returns<CaseFile[]>(),
-    supabase
-      .from("gear_items")
-      .select("*")
-      .order("sort_order", { ascending: true })
-      .returns<GearItem[]>(),
-    supabase
-      .from("site_settings")
-      .select("*")
-      .eq("id", "main")
-      .returns<SiteSettings[]>(),
-  ]);
+  const projectsResult = await supabase
+    .from("projects")
+    .select("*")
+    .order("created_at", { ascending: false })
+    .returns<Project[]>();
 
   const { data: projects, error } = projectsResult;
 
@@ -117,9 +52,6 @@ export default async function Home() {
   }
 
   const safeProjects = projects ?? [];
-  const safeCaseFiles = caseFilesResult.data ?? [];
-  const safeGear = gearResult.data?.length ? gearResult.data : fallbackGear;
-  const settings = settingsResult.data?.[0] ?? fallbackSettings;
 
   return (
     <main className="min-h-screen">
@@ -187,9 +119,6 @@ export default async function Home() {
           />
         </div>
       </section>
-
-      <Reveal><GithubMemory settings={settings} /></Reveal>
-      <Reveal><GearSection items={safeGear} /></Reveal>
 
       {/* About */}
       <Reveal>
@@ -392,10 +321,10 @@ export default async function Home() {
 
       {/* Case Files */}
       <Reveal>
-        <section id="case-files" className="mx-auto max-w-6xl scroll-mt-24 px-4 py-16 sm:px-6 sm:py-20">
-          <Link href="/case-files" className="font-mono text-sm text-[var(--color-accent)] hover:underline">
+        <section id="case-files" className="hidden">
+          <a href="/case-files" className="font-mono text-sm text-[var(--color-accent)] hover:underline">
             View all case files →
-          </Link>
+          </a>
           <h2 className="mt-2 text-3xl font-semibold">Case Files</h2>
           <p className="mt-4 max-w-2xl text-[var(--color-text-secondary)]">
             Security analysis labs and case studies, clearly labeled by their
@@ -403,7 +332,6 @@ export default async function Home() {
             tunneling in the BOTS v2 dataset.
           </p>
 
-          <CaseFilesGrid caseFiles={safeCaseFiles} />
         </section>
       </Reveal>
 

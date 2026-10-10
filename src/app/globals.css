@@ -596,6 +596,11 @@ body::after {
 .memory-low { background: rgba(207, 213, 218, 0.28); }
 .memory-mid { background: rgba(207, 213, 218, 0.58); }
 .memory-high { background: rgba(245, 247, 248, 0.92); box-shadow: 0 0 12px rgba(220, 226, 231, 0.18); }
+.memory-max { background: #ffffff; box-shadow: 0 0 15px rgba(255, 255, 255, 0.28); }
+
+.gear-tools-panel {
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0));
+}
 
 .gear-placeholder {
   background: radial-gradient(circle at 50% 45%, rgba(186, 194, 201, 0.2), transparent 42%), linear-gradient(145deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0));

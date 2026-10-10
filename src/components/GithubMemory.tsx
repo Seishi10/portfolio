@@ -2,16 +2,24 @@ import Link from "next/link";
 import { getSafeHttpsUrl } from "@/lib/safeUrl";
 import type { SiteSettings } from "@/lib/types";
 
-const levels = ["memory-empty", "memory-low", "memory-mid", "memory-high"];
+const levels = ["memory-empty", "memory-low", "memory-mid", "memory-high", "memory-max"];
 
-export default function GithubMemory({ settings }: { settings: SiteSettings }) {
-  const cells = Array.from({ length: 364 }, (_, index) => {
-    const column = index % 52;
-    const row = Math.floor(index / 52);
-    const signal = (column * 13 + row * 7 + column * row) % 17;
-    const level = signal < 5 ? 0 : signal < 9 ? 1 : signal < 14 ? 2 : 3;
-    return <span key={index} className={`activity-cell ${levels[level]}`} aria-hidden="true" />;
-  });
+async function getContributionCells(username: string) {
+  try {
+    const response = await fetch(`https://github.com/users/${encodeURIComponent(username)}/contributions`, { next: { revalidate: 3600 } });
+    if (!response.ok) return null;
+    const html = await response.text();
+    const matches = Array.from(html.matchAll(/data-date="[^"]+"[\s\S]{0,260}?data-level="([0-4])"/g));
+    if (!matches.length) return null;
+    return matches.map((match, index) => <span key={index} className={`activity-cell ${levels[Number(match[1])]}`} aria-hidden="true" />);
+  } catch {
+    return null;
+  }
+}
+
+export default async function GithubMemory({ settings }: { settings: SiteSettings }) {
+  const liveCells = await getContributionCells(settings.github_username);
+  const cells = liveCells ?? Array.from({ length: 364 }, (_, index) => <span key={index} className="activity-cell memory-empty" aria-hidden="true" />);
   const profileUrl = getSafeHttpsUrl(settings.github_url) ?? "https://github.com/Seishi10";
 
   return (
